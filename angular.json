@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "my-app": {
+    "melikai": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-app:build:production"
+              "buildTarget": "melikai:build:production"
             },
             "development": {
-              "buildTarget": "my-app:build:development"
+              "buildTarget": "melikai:build:development"
             }
           },
           "defaultConfiguration": "development"
