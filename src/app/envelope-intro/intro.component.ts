@@ -8,9 +8,14 @@ import { Router } from '@angular/router';
   styleUrl: './intro.component.css'
 })
 export class EnvelopeIntroComponent {
+  isExiting = false;
+
   constructor(private router: Router) {}
 
   enterHome(): void {
-    this.router.navigate(['/home']);
+    this.isExiting = true;
+    setTimeout(() => {
+      this.router.navigate(['/home']);
+    }, 600);
   }
 }

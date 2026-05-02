@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: 1rem;
 }
 
 .envelope-image {
@@ -12,7 +13,9 @@
   height: 500px;
   object-fit: contain;
   transition: transform 0.3s ease;
-  margin-top: 0.4rem
+  margin-top: 0.4rem;
+  max-width: 90vw;
+  max-height: 60vh;
 }
 
 .envelope-image:hover {
@@ -38,7 +41,6 @@
   margin-bottom: 0.2rem;
   animation: fadeInUp 1s ease both;
   font-family: 'Tangerine', cursive;
-
 }
 
 .subtitle-text {
@@ -61,3 +63,72 @@
     transform: translateY(0);
   }
 }
+
+/* Tablet Responsiveness (iPad) */
+@media (max-width: 1024px) {
+  .envelope-image {
+    width: 600px;
+    height: 375px;
+  }
+
+  .title-text {
+    font-size: 2rem;
+  }
+
+  .subtitle-text {
+    font-size: 1.2rem;
+  }
+
+  .click-text {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .envelope-container {
+    padding: 1.5rem;
+  }
+
+  .envelope-image {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    max-height: 70vh;
+  }
+
+  .title-text {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .subtitle-text {
+    font-size: 1rem;
+  }
+
+  .click-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .envelope-container {
+    padding: 1rem;
+  }
+
+  .envelope-image {
+    max-height: 50vh;
+  }
+
+  .title-text {
+    font-size: 1.2rem;
+    margin-top: 0.8rem;
+  }
+
+  .subtitle-text {
+    font-size: 0.85rem;
+  }
+
+  .click-text {
+    font-size: 0.8rem;

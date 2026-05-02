@@ -1,7 +1,144 @@
-<nav class="navbar">
-  <div class="navbar-brand">Kai & Melina</div>
-</nav>
+<app-navbar></app-navbar>
 
-<main class="home-container">
-  <h1>Kai & Melina</h1>
+<main class="hero-container">
+  <div class="hero-content">
+    <!-- Couple's Names -->
+    <div class="names-section">
+      <h1 class="couple-name">Kai</h1>
+      <p class="and-text">&</p>
+      <h1 class="couple-name">Melina</h1>
+    </div>
+
+    <!-- Wedding Date -->
+    <div class="date-section">
+      <p class="wedding-date">{{ t.weddingDate }}</p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-section">
+      <div class="countdown-item">
+        <span class="countdown-value">{{ countdown.days }}</span>
+        <span class="countdown-label">{{ t.days }}</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value">{{ countdown.hours }}</span>
+        <span class="countdown-label">{{ t.hours }}</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value">{{ countdown.minutes }}</span>
+        <span class="countdown-label">{{ t.minutes }}</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value">{{ countdown.seconds }}</span>
+        <span class="countdown-label">{{ t.seconds }}</span>
+      </div>
+    </div>
+  </div>
 </main>
+
+<!-- Save the Date Section -->
+<section id="save-the-date" class="save-the-date-section">
+  <div class="save-the-date-wrapper">
+    <div class="save-the-date-content">
+      <h2 class="save-the-date-title">{{ t.saveTheDateSection }}</h2>
+      <p class="save-the-date-date">October 10, 2026</p>
+      <p class="save-the-date-subtitle">Kai & Melina are getting married</p>
+      
+      <div class="calendar-actions">
+        <p class="calendar-label">{{ t.addToCalendar }}</p>
+        <div class="calendar-buttons">
+          <button class="calendar-btn calendar-btn--google" (click)="addToGoogleCalendar()" title="Add to Google Calendar">
+            Google Calendar
+          </button>
+          <button class="calendar-btn calendar-btn--outlook" (click)="addToOutlook()" title="Add to Outlook">
+            Outlook
+          </button>
+          <button class="calendar-btn calendar-btn--apple" (click)="addToAppleCalendar()" title="Download to Apple Calendar">
+            Apple Calendar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="calendar-widget">
+      <div class="calendar-widget-inner">
+        <h3 class="calendar-month-year">October 2026</h3>
+        <div class="calendar-grid">
+          <div class="calendar-day-header">Sun</div>
+          <div class="calendar-day-header">Mon</div>
+          <div class="calendar-day-header">Tue</div>
+          <div class="calendar-day-header">Wed</div>
+          <div class="calendar-day-header">Thu</div>
+          <div class="calendar-day-header">Fri</div>
+          <div class="calendar-day-header">Sat</div>
+          
+          <div class="calendar-day calendar-day--empty"></div>
+          <div class="calendar-day calendar-day--empty"></div>
+          <div class="calendar-day calendar-day--empty"></div>
+          <div class="calendar-day calendar-day--empty"></div>
+          <div class="calendar-day calendar-day--empty"></div>
+          <div class="calendar-day">1</div>
+          <div class="calendar-day">2</div>
+          
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day">5</div>
+          <div class="calendar-day">6</div>
+          <div class="calendar-day">7</div>
+          <div class="calendar-day">8</div>
+          <div class="calendar-day">9</div>
+          
+          <div class="calendar-day calendar-day--wedding">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day">12</div>
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day">20</div>
+          <div class="calendar-day">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
+          
+          <div class="calendar-day">31</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Timeline Section -->
+<section id="timeline" class="content-section">
+  <div class="section-content">
+    <h2 class="section-title">{{ t.timelineSection }}</h2>
+    <p class="section-text">Wedding timeline and schedule of events. hello</p>
+  </div>
+</section>
+
+<!-- Details Section -->
+<section id="details" class="content-section">
+  <div class="section-content">
+    <h2 class="section-title">{{ t.detailsSection }}</h2>
+    <p class="section-text">Venue, accommodations, dress code, and other important details.</p>
+  </div>
+</section>
+
+<!-- RSVP Section -->
+<section id="rsvp" class="content-section">
+  <div class="section-content">
+    <h2 class="section-title">{{ t.rsvpSection }}</h2>
+    <p class="section-text">Please RSVP by a specific date to help us plan.</p>
+  </div>
+</section>

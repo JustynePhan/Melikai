@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <ul class="navbar-links">
+    <li><a href="#save-the-date" onclick="event.preventDefault(); document.getElementById('save-the-date').scrollIntoView({behavior: 'smooth'})">{{ t.saveTheDate }}</a></li>
+    <li><a href="#timeline" onclick="event.preventDefault(); document.getElementById('timeline').scrollIntoView({behavior: 'smooth'})">{{ t.timeline }}</a></li>
+    <li><a href="#details" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
+    <li><a href="#rsvp" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
+  </ul>
+  <button class="language-toggle" (click)="languageService.toggleLanguage()">
+    {{ languageService.language === 'en' ? 'FR' : 'EN' }}
+  </button>
+</nav>

@@ -1,26 +1,804 @@
+/* Hero Container */
+.hero-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 2rem 2rem 2rem;
+  position: relative;
+  background-image: url('/Home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  margin: 0;
+  border: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  filter: grayscale(75%);
+  scroll-margin-top: 60px;
+}
 
+.hero-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/Home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+  margin: 0;
+  border: 0;
+  filter: grayscale(75%);
+}
 
-.home-container {
-  min-height: calc(100vh - 80px);
+.hero-content {
+  text-align: center;
+  animation: fadeIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Couple's Names Section */
+.names-section {
+  margin-bottom: 3rem;
+}
+
+.couple-name {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0.5rem 0;
+  letter-spacing: 0.05em;
+}
+
+.and-text {
+  font-family: 'Brush Script MT', 'Lucida Calligraphy', cursive;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin: 1rem 0;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Wedding Date Section */
+.date-section {
+  margin-bottom: 4rem;
+}
+
+.wedding-date {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Countdown Section */
+.countdown-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+
+.countdown-value {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Responsive Design - Tablet (iPad) */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 1.5rem;
+  }
+
+  .navbar {
+    height: 55px;
+  }
+
+  .navbar-links {
+    gap: 2rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.75rem;
+  }
+
+  .language-toggle {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-container {
+    padding: 55px 2rem 2rem 2rem;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .names-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .couple-name {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+  }
+
+  .and-text {
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    margin: 0.8rem 0;
+  }
+
+  .wedding-date {
+    font-size: clamp(0.95rem, 2vw, 1.3rem);
+  }
+
+  .date-section {
+    margin-bottom: 3rem;
+  }
+
+  .countdown-section {
+    gap: 1.5rem;
+  }
+
+  .countdown-item {
+    min-width: 70px;
+  }
+
+  .countdown-value {
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  }
+
+  .countdown-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile Responsiveness (Phones & Small Tablets) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 0.4rem;
+    height: 45px;
+  }
+
+  .navbar-links {
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .navbar-links a {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .navbar-links li {
+    height: 1.1em;
+  }
+
+  .navbar-links li:not(:last-child)::after {
+    display: none;
+  }
+
+  .language-toggle {
+    padding: 0.3rem 0.45rem;
+    font-size: 0.55rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .hero-container {
+    padding: 45px 1.5rem 1.5rem 1.5rem;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .names-section {
+    margin-bottom: 2rem;
+  }
+
+  .couple-name {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    margin: 0.3rem 0;
+  }
+
+  .and-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin: 0.6rem 0;
+  }
+
+  .wedding-date {
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+  }
+
+  .date-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .countdown-section {
+    gap: 1rem;
+  }
+
+  .countdown-item {
+    min-width: 60px;
+  }
+
+  .countdown-value {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+  }
+
+  .countdown-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 0.3rem;
+    height: 45px;
+  }
+
+  .navbar-links {
+    gap: 0.4rem;
+    flex: 1;
+  }
+
+  .navbar-links a {
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .navbar-links li:not(:last-child)::after {
+    display: none;
+  }
+
+  .language-toggle {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.55rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .hero-container {
+    padding: 45px 1rem 1rem 1rem;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .names-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .couple-name {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin: 0.2rem 0;
+  }
+
+  .and-text {
+    font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+    margin: 0.4rem 0;
+  }
+
+  .wedding-date {
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  }
+
+  .date-section {
+    margin-bottom: 2rem;
+  }
+
+  .countdown-section {
+    gap: 0.8rem;
+  }
+
+  .countdown-item {
+    min-width: 50px;
+  }
+
+  .countdown-value {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .countdown-label {
+    font-size: 0.55rem;
+  }
+}
+/* Content Sections */
+.content-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 2rem;
+  padding: 4rem 2rem;
+  background-color: #f9f7f4;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  scroll-margin-top: 60px;
+}
+
+.content-section:nth-child(odd) {
+  background-color: #f9f7f4;
+}
+
+.content-section:nth-child(even) {
+  background-color: #fdfbf8;
+}
+
+.section-content {
+  max-width: 800px;
   text-align: center;
 }
 
-.home-container h1 {
-  font-size: 3rem;
-  color: #333;
-  margin: 0 0 1rem 0;
+.section-title {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  color: #2d2d2d;
+  margin: 0 0 2rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section-text {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
   letter-spacing: 0.02em;
 }
 
-.home-container p {
-  font-size: 1.25rem;
-  color: #666;
-  margin: 0;
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+  .content-section {
+    padding: 3rem 2rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-text {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .content-section {
+    min-height: auto;
+    padding: 2.5rem 1.5rem;
+    scroll-margin-top: 50px;
+  }
+
+  .section-title {
+    font-size: clamp(1.3rem, 4vw, 2.2rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-text {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .content-section {
+    min-height: auto;
+    padding: 2rem 1rem;
+    scroll-margin-top: 45px;
+  }
+
+  .section-title {
+    font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-text {
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  }
+
+  .calendar-buttons {
+    flex-direction: column;
+  }
+
+  .calendar-btn {
+    width: 100%;
+  }
+}
+
+/* Save the Date Section - Pinkish Vibe */
+/* Save the Date Section - Luxury Wedding Editorial */
+.save-the-date-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #faf9f8 0%, #f7f4f3 100%);
+  scroll-margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.save-the-date-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(201, 120, 129, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(201, 120, 129, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.save-the-date-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.save-the-date-content {
+  max-width: 720px;
+  text-align: center;
+}
+
+.save-the-date-title {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 400;
+  color: #4a3f3a;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.save-the-date-date {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 300;
+  color: #8b7a72;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.05em;
+}
+
+.save-the-date-subtitle {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  color: #a89989;
+  margin: 0 0 3rem 0;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.calendar-actions {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(168, 122, 107, 0.15);
+}
+
+.calendar-label {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #8b7a72;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.calendar-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.calendar-btn {
+  padding: 0.875rem 1.875rem;
+  border: 1.5px solid #c9a89f;
+  border-radius: 3px;
+  background: transparent;
+  color: #6b5a52;
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendar-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(212, 169, 160, 0.12) 0%, rgba(168, 122, 107, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.calendar-btn:hover {
+  border-color: #a8876f;
+  color: #5a4a42;
+  background: linear-gradient(135deg, rgba(212, 169, 160, 0.12) 0%, rgba(168, 122, 107, 0.08) 100%);
+}
+
+.calendar-btn:active {
+  transform: translateY(1px);
+}
+
+/* Calendar Widget */
+.calendar-widget {
+  position: relative;
+}
+
+.calendar-widget-inner {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgb(201, 120, 129);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: 0 8px 32px rgba(201, 120, 129, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.calendar-month-year {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgb(201, 120, 129);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day-header {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(201, 120, 129);
+  text-align: center;
+  padding: 0.5rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #6b5a52;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.calendar-day--empty {
+  visibility: hidden;
+}
+
+.calendar-day:not(.calendar-day--empty) {
+  border: 1px solid transparent;
+}
+
+.calendar-day--wedding {
+  color: #fff;
+  background: linear-gradient(135deg, rgb(201, 120, 129) 0%, rgba(201, 120, 129, 0.8) 100%);
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(201, 120, 129, 0.3);
+  position: relative;
+  border-radius: 50%;
+}
+
+.calendar-day--wedding::after {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  border: 2px solid rgba(201, 120, 129, 0.4);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+}
+
+@media (max-width: 1024px) {
+  .save-the-date-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .calendar-widget {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .save-the-date-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .save-the-date-title {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .save-the-date-date {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .save-the-date-subtitle {
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    margin-bottom: 2rem;
+  }
+
+  .calendar-actions {
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
+  .calendar-buttons {
+    gap: 0.75rem;
+  }
+
+  .calendar-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    border-width: 1px;
+  }
+
+  .calendar-label {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .calendar-widget-inner {
+    padding: 1.5rem;
+  }
+
+  .calendar-month-year {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .calendar-grid {
+    gap: 0.4rem;
+  }
+
+  .calendar-day {
+    font-size: 0.85rem;
+  }
+
+  .calendar-day-header {
+    font-size: 0.7rem;
+    padding: 0.4rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .save-the-date-section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .save-the-date-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.2rem);
+    margin-bottom: 1rem;
+  }
+
+  .save-the-date-date {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+  }
+
+  .save-the-date-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    margin-bottom: 1.75rem;
+  }
+
+  .calendar-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .calendar-btn {
+    width: 100%;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.88rem;
+  }
+
+  .calendar-label {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .calendar-widget-inner {
+    padding: 1.25rem;
+  }
+
+  .calendar-month-year {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .calendar-grid {
+    gap: 0.3rem;
+  }
+
+  .calendar-day {
+    font-size: 0.75rem;
+  }
+
+  .calendar-day-header {
+    font-size: 0.65rem;
+    padding: 0.3rem 0;
+  }
 }
