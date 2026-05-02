@@ -35,84 +35,71 @@
     </div>
   </div>
 </main>
-
-<!-- Save the Date Section -->
-<section id="save-the-date" class="save-the-date-section">
-  <div class="save-the-date-wrapper">
-    <div class="save-the-date-content">
-      <h2 class="save-the-date-title">{{ t.saveTheDateSection }}</h2>
-      <p class="save-the-date-date">October 10, 2026</p>
-      <p class="save-the-date-subtitle">Kai & Melina are getting married</p>
-      
-      <div class="calendar-actions">
-        <p class="calendar-label">{{ t.addToCalendar }}</p>
-        <div class="calendar-buttons">
-          <button class="calendar-btn calendar-btn--google" (click)="addToGoogleCalendar()" title="Add to Google Calendar">
-            Google Calendar
-          </button>
-          <button class="calendar-btn calendar-btn--outlook" (click)="addToOutlook()" title="Add to Outlook">
-            Outlook
-          </button>
-          <button class="calendar-btn calendar-btn--apple" (click)="addToAppleCalendar()" title="Download to Apple Calendar">
-            Apple Calendar
-          </button>
-        </div>
-      </div>
+<!-- Welcome section -->
+<section class="welcome-section">
+  <div class="welcome-wrapper">
+    <div class="welcome-content">
+      <h2 class="welcome-title">{{ t.welcomeMessage }}</h2>
+      <p class="welcome-text">{{ t.welcomePara1 }}</p>
+      <p class="welcome-text">{{ t.welcomePara2 }}</p>
+      <p class="welcome-text">{{ t.welcomePara3 }}</p>
+      <span class="welcome-signoff">{{ t.welcomeClosing }}</span>
+      <p class="welcome-names">{{ t.welcomeNames }}</p>
     </div>
 
     <aside class="calendar-widget">
-      <div class="calendar-widget-inner">
-        <h3 class="calendar-month-year">October 2026</h3>
-        <div class="calendar-grid">
-          <div class="calendar-day-header">Sun</div>
-          <div class="calendar-day-header">Mon</div>
-          <div class="calendar-day-header">Tue</div>
-          <div class="calendar-day-header">Wed</div>
-          <div class="calendar-day-header">Thu</div>
-          <div class="calendar-day-header">Fri</div>
-          <div class="calendar-day-header">Sat</div>
-          
-          <div class="calendar-day calendar-day--empty"></div>
-          <div class="calendar-day calendar-day--empty"></div>
-          <div class="calendar-day calendar-day--empty"></div>
-          <div class="calendar-day calendar-day--empty"></div>
-          <div class="calendar-day calendar-day--empty"></div>
-          <div class="calendar-day">1</div>
-          <div class="calendar-day">2</div>
-          
-          <div class="calendar-day">3</div>
-          <div class="calendar-day">4</div>
-          <div class="calendar-day">5</div>
-          <div class="calendar-day">6</div>
-          <div class="calendar-day">7</div>
-          <div class="calendar-day">8</div>
-          <div class="calendar-day">9</div>
-          
-          <div class="calendar-day calendar-day--wedding">10</div>
-          <div class="calendar-day">11</div>
-          <div class="calendar-day">12</div>
-          <div class="calendar-day">13</div>
-          <div class="calendar-day">14</div>
-          <div class="calendar-day">15</div>
-          <div class="calendar-day">16</div>
-          
-          <div class="calendar-day">17</div>
-          <div class="calendar-day">18</div>
-          <div class="calendar-day">19</div>
-          <div class="calendar-day">20</div>
-          <div class="calendar-day">21</div>
-          <div class="calendar-day">22</div>
-          <div class="calendar-day">23</div>
-          
-          <div class="calendar-day">24</div>
-          <div class="calendar-day">25</div>
-          <div class="calendar-day">26</div>
-          <div class="calendar-day">27</div>
-          <div class="calendar-day">28</div>
-          <div class="calendar-day">29</div>
-          <div class="calendar-day">30</div>
-          
-          <div class="calendar-day">31</div>
+      <div class="calendar-card">
+        <h3 class="calendar-title">October 2026</h3>
+        <div class="cal-grid">
+          <div class="cal-header">SUN</div>
+          <div class="cal-header">MON</div>
+          <div class="cal-header">TUE</div>
+          <div class="cal-header">WED</div>
+          <div class="cal-header">THU</div>
+          <div class="cal-header">FRI</div>
+          <div class="cal-header">SAT</div>
+
+          <div class="cal-day cal-empty"></div>
+          <div class="cal-day cal-empty"></div>
+          <div class="cal-day cal-empty"></div>
+          <div class="cal-day cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+
+          <div class="cal-day">4</div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day">9</div>
+          <div class="cal-day cal-wedding">
+            <span>10</span>
+          </div>
+
+          <div class="cal-day">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day">15</div>
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+
+          <div class="cal-day">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day">20</div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day">23</div>
+          <div class="cal-day">24</div>
+
+          <div class="cal-day">25</div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day">30</div>
+          <div class="cal-day">31</div>
         </div>
       </div>
     </aside>

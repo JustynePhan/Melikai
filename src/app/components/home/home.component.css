@@ -344,6 +344,72 @@
     font-size: 0.55rem;
   }
 }
+/* Welcome Section */
+.welcome-section {
+  width: 100%;
+  background-color: #ECE9E7;
+  padding: 6rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-margin-top: 60px;
+}
+
+.welcome-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.welcome-content {
+  text-align: left;
+}
+
+.welcome-title {
+  font-family: 'Great Vibes', 'Tangerine', cursive;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 400;
+  color: #000000;
+  margin: 0 0 2.5rem 0;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.welcome-text {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #000000;
+  line-height: 2;
+  margin: 0 0 1.6rem 0;
+  letter-spacing: 0.02em;
+}
+
+.welcome-signoff {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #000000;
+  line-height: 2;
+  margin: 2.5rem 0 0.4rem 0;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+.welcome-names {
+  font-family: 'Great Vibes', 'Tangerine', cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
 /* Content Sections */
 .content-section {
   min-height: 100vh;
@@ -450,355 +516,168 @@
   }
 }
 
-/* Save the Date Section - Pinkish Vibe */
-/* Save the Date Section - Luxury Wedding Editorial */
-.save-the-date-section {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #faf9f8 0%, #f7f4f3 100%);
-  scroll-margin-top: 60px;
-  position: relative;
-  overflow: hidden;
-}
-
-.save-the-date-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(201, 120, 129, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(201, 120, 129, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.save-the-date-wrapper {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 4rem;
-  align-items: center;
-}
-
-.save-the-date-content {
-  max-width: 720px;
-  text-align: center;
-}
-
-.save-the-date-title {
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: clamp(2.5rem, 7vw, 4rem);
-  font-weight: 400;
-  color: #4a3f3a;
-  margin: 0 0 1.5rem 0;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-}
-
-.save-the-date-date {
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 300;
-  color: #8b7a72;
-  margin: 0 0 0.75rem 0;
-  letter-spacing: 0.05em;
-}
-
-.save-the-date-subtitle {
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  font-weight: 300;
-  color: #a89989;
-  margin: 0 0 3rem 0;
-  letter-spacing: 0.02em;
-  line-height: 1.6;
-}
-
-.calendar-actions {
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(168, 122, 107, 0.15);
-}
-
-.calendar-label {
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #8b7a72;
-  margin: 0 0 1.5rem 0;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.calendar-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.calendar-btn {
-  padding: 0.875rem 1.875rem;
-  border: 1.5px solid #c9a89f;
-  border-radius: 3px;
-  background: transparent;
-  color: #6b5a52;
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-}
-
-.calendar-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(212, 169, 160, 0.12) 0%, rgba(168, 122, 107, 0.08) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.calendar-btn:hover {
-  border-color: #a8876f;
-  color: #5a4a42;
-  background: linear-gradient(135deg, rgba(212, 169, 160, 0.12) 0%, rgba(168, 122, 107, 0.08) 100%);
-}
-
-.calendar-btn:active {
-  transform: translateY(1px);
-}
-
 /* Calendar Widget */
 .calendar-widget {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.calendar-widget-inner {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid rgb(201, 120, 129);
-  border-radius: 8px;
-  padding: 1.75rem;
-  box-shadow: 0 8px 32px rgba(201, 120, 129, 0.12);
-  backdrop-filter: blur(10px);
+.calendar-card {
+  background-image: url('/calendar-background.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 6px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
-.calendar-month-year {
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: 1.15rem;
+.calendar-title {
+  font-family: 'Great Vibes', 'Tangerine', cursive;
+  font-size: 2.5rem;
   font-weight: 400;
   color: rgb(201, 120, 129);
-  margin: 0 0 1.5rem 0;
   text-align: center;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+
+.cal-header {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  font-weight: 600;
+  color: rgb(201, 120, 129);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.4rem 0 0.75rem;
   letter-spacing: 0.04em;
 }
 
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-}
-
-.calendar-day-header {
-  font-family: 'Georgia', 'Garamond', serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: rgb(201, 120, 129);
-  text-align: center;
-  padding: 0.5rem 0;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.calendar-day {
-  aspect-ratio: 1;
+.cal-day {
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Georgia', 'Garamond', serif;
   font-size: 0.9rem;
   font-weight: 400;
-  color: #6b5a52;
-  transition: all 0.2s ease;
-  cursor: default;
+  color: #2d2020;
+  position: relative;
 }
 
-.calendar-day--empty {
+.cal-empty {
   visibility: hidden;
 }
 
-.calendar-day:not(.calendar-day--empty) {
-  border: 1px solid transparent;
-}
-
-.calendar-day--wedding {
-  color: #fff;
-  background: linear-gradient(135deg, rgb(201, 120, 129) 0%, rgba(201, 120, 129, 0.8) 100%);
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(201, 120, 129, 0.3);
+.cal-wedding {
   position: relative;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.calendar-day--wedding::after {
+.cal-wedding::before {
   content: '';
   position: absolute;
-  width: 110%;
-  height: 110%;
-  border: 2px solid rgba(201, 120, 129, 0.4);
-  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  background-image: url('/pink.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.6;
+  z-index: 0;
+}
+
+.cal-wedding span {
+  position: relative;
+  z-index: 1;
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #2d2020;
 }
 
 @media (max-width: 1024px) {
-  .save-the-date-wrapper {
+  .welcome-wrapper {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 
+  .welcome-content {
+    text-align: center;
+  }
+
   .calendar-widget {
-    max-width: 400px;
+    max-width: 460px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
-  .save-the-date-section {
-    padding: 3rem 1.5rem;
+  .welcome-section {
+    padding: 4rem 1.5rem;
   }
 
-  .save-the-date-title {
-    font-size: clamp(2rem, 5.5vw, 3rem);
+  .calendar-card {
+    padding: 1.5rem 1.75rem;
+  }
+
+  .calendar-title {
+    font-size: 1.8rem;
     margin-bottom: 1.25rem;
   }
 
-  .save-the-date-date {
-    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
-    margin-bottom: 0.5rem;
+  .cal-header {
+    font-size: 0.6rem;
   }
 
-  .save-the-date-subtitle {
-    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-    margin-bottom: 2rem;
+  .cal-day {
+    height: 34px;
+    font-size: 0.8rem;
   }
 
-  .calendar-actions {
-    margin-top: 2rem;
-    padding-top: 2rem;
-  }
-
-  .calendar-buttons {
-    gap: 0.75rem;
-  }
-
-  .calendar-btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-    border-width: 1px;
-  }
-
-  .calendar-label {
-    font-size: 0.85rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .calendar-widget-inner {
-    padding: 1.5rem;
-  }
-
-  .calendar-month-year {
-    font-size: 1rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .calendar-grid {
-    gap: 0.4rem;
-  }
-
-  .calendar-day {
-    font-size: 0.85rem;
-  }
-
-  .calendar-day-header {
-    font-size: 0.7rem;
-    padding: 0.4rem 0;
+  .cal-wedding span {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
-  .save-the-date-section {
-    padding: 2rem 1rem;
-    min-height: auto;
+  .welcome-section {
+    padding: 3rem 1rem;
   }
 
-  .save-the-date-title {
-    font-size: clamp(1.75rem, 4.5vw, 2.2rem);
-    margin-bottom: 1rem;
-  }
-
-  .save-the-date-date {
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-  }
-
-  .save-the-date-subtitle {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    margin-bottom: 1.75rem;
-  }
-
-  .calendar-buttons {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .calendar-btn {
-    width: 100%;
-    padding: 0.8rem 1.25rem;
-    font-size: 0.88rem;
-  }
-
-  .calendar-label {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .calendar-widget-inner {
+  .calendar-card {
     padding: 1.25rem;
   }
 
-  .calendar-month-year {
-    font-size: 0.95rem;
+  .calendar-title {
+    font-size: 1.55rem;
     margin-bottom: 1rem;
   }
 
-  .calendar-grid {
-    gap: 0.3rem;
+  .cal-header {
+    font-size: 0.52rem;
   }
 
-  .calendar-day {
-    font-size: 0.75rem;
+  .cal-day {
+    height: 28px;
+    font-size: 0.7rem;
   }
 
-  .calendar-day-header {
-    font-size: 0.65rem;
-    padding: 0.3rem 0;
+  .cal-wedding span {
+    font-size: 0.7rem;
   }
 }

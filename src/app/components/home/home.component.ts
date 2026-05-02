@@ -28,6 +28,12 @@ interface Translations {
   googleCalendar: string;
   outlookCalendar: string;
   appleCalendar: string;
+  welcomeMessage: string;
+  welcomePara1: string;
+  welcomePara2: string;
+  welcomePara3: string;
+  welcomeClosing: string;
+  welcomeNames: string;
 }
 
 @Component({
@@ -62,7 +68,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       addToCalendar: 'Add to Your Calendar',
       googleCalendar: 'Google Calendar',
       outlookCalendar: 'Outlook',
-      appleCalendar: 'Apple Calendar'
+      appleCalendar: 'Apple Calendar',
+      welcomeMessage: 'You are invited',
+      welcomePara1: 'We\'re so delighted you\'re here and can\'t wait to celebrate this special moment with you.',
+      welcomePara2: 'This space has been thoughtfully created to guide you through all the details as our wedding approaches, from venue information and RSVP to the event schedule and other essentials.',
+      welcomePara3: 'Having you with us on this day means everything, and we\'re truly excited to share these moments, laughter, and memories together.',
+      welcomeClosing: 'With all our love,',
+      welcomeNames: 'Kai & Melina'
     },
     fr: {
       saveTheDate: 'Marquez la Date',
@@ -81,7 +93,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       addToCalendar: 'Ajouter à Votre Calendrier',
       googleCalendar: 'Google Agenda',
       outlookCalendar: 'Outlook',
-      appleCalendar: 'Calendrier Apple'
+      appleCalendar: 'Calendrier Apple',
+      welcomeMessage: 'Vous êtes invités',
+      welcomePara1: 'Nous sommes si heureux que vous soyez là et avons hâte de célébrer ce moment spécial avec vous.',
+      welcomePara2: 'Cet espace a été soigneusement conçu pour vous guider à travers tous les détails à l\'approche de notre mariage — des informations sur le lieu et le RSVP au programme et autres essentiels.',
+      welcomePara3: 'Avoir votre présence en ce jour signifie tout pour nous, et nous sommes vraiment impatients de partager ces moments, ces rires et ces souvenirs ensemble.',
+      welcomeClosing: 'Avec tout notre amour,',
+      welcomeNames: 'Kai & Melina'
     }
   };
 
