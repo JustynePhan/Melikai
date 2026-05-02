@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LanguageService } from '../shared/language.service';
-import { Navbar } from '../shared/navbar/navbar';
+import { LanguageService } from '../../shared/language.service';
+import { Navbar } from '../navbar/navbar';
 
 interface Countdown {
   days: number;
