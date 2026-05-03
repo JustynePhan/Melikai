@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 2rem 2rem 2rem;
+  padding: 2rem;
   position: relative;
   background-image: url('/Home.jpg');
   background-size: cover;
@@ -62,21 +62,25 @@
 }
 
 .couple-name {
-  font-family: 'Georgia', 'Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: clamp(3.5rem, 10vw, 6rem);
-  font-weight: 400;
+  font-style: italic;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.95);
   margin: 0.5rem 0;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
+
 }
 
 .and-text {
-  font-family: 'Brush Script MT', 'Lucida Calligraphy', cursive;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: rgba(255, 255, 255, 0.85);
   margin: 1rem 0;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 300;
+  letter-spacing: 0.1em;
 }
 
 /* Wedding Date Section */
@@ -85,12 +89,12 @@
 }
 
 .wedding-date {
-  font-family: 'Georgia', 'Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
 }
 
@@ -128,27 +132,6 @@
 
 /* Responsive Design - Tablet (iPad) */
 @media (max-width: 1024px) {
-  .navbar {
-    padding: 0 1.5rem;
-  }
-
-  .navbar {
-    height: 55px;
-  }
-
-  .navbar-links {
-    gap: 2rem;
-  }
-
-  .navbar-links a {
-    font-size: 0.75rem;
-  }
-
-  .language-toggle {
-    padding: 0.45rem 0.9rem;
-    font-size: 0.7rem;
-  }
-
   .hero-container {
     padding: 55px 2rem 2rem 2rem;
     background-size: cover;
@@ -195,41 +178,15 @@
 
 /* Mobile Responsiveness (Phones & Small Tablets) */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 0 0.4rem;
-    height: 45px;
-  }
-
-  .navbar-links {
-    gap: 0.5rem;
-    flex: 1;
-  }
-
-  .navbar-links a {
-    font-size: 0.55rem;
-    letter-spacing: 0.08em;
-  }
-
-  .navbar-links li {
-    height: 1.1em;
-  }
-
-  .navbar-links li:not(:last-child)::after {
-    display: none;
-  }
-
-  .language-toggle {
-    padding: 0.3rem 0.45rem;
-    font-size: 0.55rem;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
   .hero-container {
-    padding: 45px 1.5rem 1.5rem 1.5rem;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+    padding: 56px 1.5rem 1.5rem 1.5rem;
+    background-image: none;
+  }
+
+  .hero-container::before {
+    display: block;
+    position: absolute;
+    background-attachment: scroll;
   }
 
   .names-section {
@@ -273,37 +230,9 @@
 
 /* Small Mobile Devices */
 @media (max-width: 480px) {
-  .navbar {
-    padding: 0 0.3rem;
-    height: 45px;
-  }
-
-  .navbar-links {
-    gap: 0.4rem;
-    flex: 1;
-  }
-
-  .navbar-links a {
-    font-size: 0.5rem;
-    letter-spacing: 0.05em;
-  }
-
-  .navbar-links li:not(:last-child)::after {
-    display: none;
-  }
-
-  .language-toggle {
-    padding: 0.3rem 0.4rem;
-    font-size: 0.55rem;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
   .hero-container {
-    padding: 45px 1rem 1rem 1rem;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+    padding: 56px 1rem 1rem 1rem;
+    background-image: none;
   }
 
   .names-section {
@@ -347,8 +276,8 @@
 /* Welcome Section */
 .welcome-section {
   width: 100%;
-  background-color: #ECE9E7;
-  padding: 6rem 4rem;
+  background-color: #F7F4EF;
+  padding: 6rem clamp(2rem, 8vw, 6rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -356,22 +285,22 @@
 }
 
 .welcome-wrapper {
-  max-width: 1200px;
+  max-width: 800px;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .welcome-content {
-  text-align: left;
+  text-align: center;
+  width: 100%;
 }
 
 .welcome-title {
-  font-family: 'Great Vibes', 'Tangerine', cursive;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 400;
+  font-weight: 300;
+  font-style: italic;
   color: #000000;
   margin: 0 0 2.5rem 0;
   letter-spacing: 0.02em;
@@ -402,12 +331,277 @@
 }
 
 .welcome-names {
-  font-family: 'Great Vibes', 'Tangerine', cursive;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400;
+  font-weight: 300;
+  font-style: italic;
   color: #000000;
   margin: 0;
   letter-spacing: 0.02em;
+}
+
+/* Standalone Countdown Section */
+.countdown-standalone-section {
+  width: 100%;
+  min-height: 50vh;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url('/countdown.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  filter: grayscale(100%);
+}
+
+.countdown-standalone-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+.countdown-standalone-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.countdown-standalone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+
+.countdown-standalone-value {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(4rem, 9vw, 7rem);
+  font-weight: 300;
+  color: #ECE9E7;
+  line-height: 1;
+}
+
+.countdown-standalone-label {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(236, 233, 231, 0.5);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.countdown-standalone-sep {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 1.5rem;
+  color: rgba(236, 233, 231, 0.2);
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .countdown-standalone-section {
+    min-height: 40vh;
+    padding: 4rem 1.5rem;
+  }
+
+  .countdown-standalone-inner {
+    gap: 1.5rem;
+  }
+
+  .countdown-standalone-value {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .countdown-standalone-label {
+    font-size: 0.6rem;
+  }
+
+  .countdown-standalone-sep {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-standalone-section {
+    min-height: 35vh;
+    padding: 3rem 1rem;
+  }
+
+  .countdown-standalone-inner {
+    gap: 1rem;
+  }
+
+  .countdown-standalone-item {
+    min-width: 55px;
+  }
+
+  .countdown-standalone-value {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .countdown-standalone-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+  }
+
+  .countdown-standalone-sep {
+    font-size: 1rem;
+    margin-top: 0.4rem;
+  }
+}
+
+/* Timeline Section */
+.timeline-section {
+  width: 100%;
+  background-color: #F7F4EF;
+  padding: 7rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-margin-top: 60px;
+}
+
+.timeline-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.timeline-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.timeline-title-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.timeline-title-main span {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.title-the {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  letter-spacing: 0.45em;
+}
+
+.title-wedding {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  letter-spacing: 0.22em;
+}
+
+.title-day {
+  font-size: clamp(2rem, 100vw, 3.2rem);
+  letter-spacing: 0.28em;
+}
+
+.timeline-title-script {
+  font-family: 'Great Vibes', 'Tangerine', cursive;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-top: -0.4rem;
+  margin-left: 1.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-left: 1px solid rgba(26, 26, 26, 0.15);
+  padding-left: 1.5rem;
+}
+
+.timeline-time {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.timeline-event {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #555;
+  margin: 0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .timeline-wrapper {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 5rem 2rem;
+  }
+
+  .timeline-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .timeline-title-block {
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-item {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(26, 26, 26, 0.15);
+    padding-top: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-list {
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-section {
+    padding: 4rem 1.25rem;
+  }
 }
 
 /* Content Sections */
@@ -524,22 +718,20 @@
 }
 
 .calendar-card {
-  background-image: url('/calendar-background.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #f3eee8;
   width: 100%;
   max-width: 520px;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 2rem 2.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .calendar-title {
   font-family: 'Great Vibes', 'Tangerine', cursive;
   font-size: 2.5rem;
   font-weight: 400;
-  color: rgb(201, 120, 129);
+  color: #1a1a1a;
   text-align: center;
   margin: 0 0 1.5rem 0;
   letter-spacing: 0.02em;
@@ -556,7 +748,7 @@
   font-size: 0.72rem;
   font-style: italic;
   font-weight: 600;
-  color: rgb(201, 120, 129);
+  color: #555;
   text-align: center;
   text-transform: uppercase;
   padding: 0.4rem 0 0.75rem;
@@ -568,7 +760,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Georgia', 'Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: 0.9rem;
   font-weight: 400;
   color: #2d2020;
@@ -589,8 +781,8 @@
 .cal-wedding::before {
   content: '';
   position: absolute;
-  width: 37px;
-  height: 37px;
+  width: 50px;
+  height: 50px;
   background-image: url('/pink.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -604,80 +796,396 @@
 .cal-wedding span {
   position: relative;
   z-index: 1;
-  font-family: 'Georgia', 'Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: 0.9rem;
   font-weight: 400;
   color: #2d2020;
 }
 
 @media (max-width: 1024px) {
-  .welcome-wrapper {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .welcome-content {
-    text-align: center;
-  }
-
-  .calendar-widget {
-    max-width: 460px;
-    margin: 0 auto;
+  .welcome-section {
+    padding: 5rem clamp(2rem, 6vw, 4rem);
   }
 }
 
 @media (max-width: 768px) {
   .welcome-section {
-    padding: 4rem 1.5rem;
+    padding: 4rem 2rem;
+  }
+
+  .calendar-widget {
+    width: 92vw;
+    max-width: 92vw;
+    margin: 0 auto;
   }
 
   .calendar-card {
-    padding: 1.5rem 1.75rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem 1rem;
+    box-sizing: border-box;
   }
 
   .calendar-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.25rem;
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .cal-grid {
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
   }
 
   .cal-header {
-    font-size: 0.6rem;
+    font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+    padding: 0.3rem 0 0.6rem;
+    letter-spacing: 0;
   }
 
   .cal-day {
+    height: 36px;
+    font-size: clamp(0.72rem, 2.2vw, 0.88rem);
+  }
+
+  .cal-wedding::before {
+    width: 34px;
     height: 34px;
-    font-size: 0.8rem;
   }
 
   .cal-wedding span {
-    font-size: 0.8rem;
+    font-size: clamp(0.72rem, 2.2vw, 0.88rem);
   }
 }
 
 @media (max-width: 480px) {
   .welcome-section {
-    padding: 3rem 1rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .calendar-widget {
+    width: 96vw;
+    max-width: 96vw;
+    margin: 0 auto;
   }
 
   .calendar-card {
-    padding: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 0.75rem;
+    box-sizing: border-box;
   }
 
   .calendar-title {
-    font-size: 1.55rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .cal-grid {
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
   }
 
   .cal-header {
-    font-size: 0.52rem;
+    font-size: clamp(0.48rem, 2vw, 0.6rem);
+    padding: 0.25rem 0 0.5rem;
+    letter-spacing: 0;
   }
 
   .cal-day {
-    height: 28px;
-    font-size: 0.7rem;
+    height: 32px;
+    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
+  }
+
+  .cal-wedding::before {
+    width: 30px;
+    height: 30px;
   }
 
   .cal-wedding span {
-    font-size: 0.7rem;
+    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
+  }
+}
+
+/* ============================================
+   Details Section
+   ============================================ */
+
+.details-section {
+  background-color: #F7F4EF;
+  background-image: url('/chruch.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+  scroll-margin-top: 60px;
+  position: relative;
+  filter: grayscale(100%);
+}
+
+.details-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  z-index: 0;
+}
+
+.details-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.details-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 3.5rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.details-venues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.details-block {
+  margin-bottom: 0;
+}
+
+.details-label {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 0.4rem;
+}
+
+.details-address {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.details-map {
+  width: 100%;
+  overflow: hidden;
+  filter: grayscale(60%);
+  transition: filter 0.4s ease;
+}
+
+.details-map:hover {
+  filter: grayscale(0%);
+}
+
+.details-map iframe {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .details-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .details-venues {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .details-map iframe {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-section {
+    padding: 3rem 1rem;
+  }
+}
+
+/* ============================================
+   RSVP Section
+   ============================================ */
+
+.rsvp-section {
+  background-color: #F7F4EF;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.rsvp-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.rsvp-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.rsvp-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #2d2020;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.rsvp-subtitle {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: #7a6a6a;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.rsvp-label {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: #4a3a3a;
+  letter-spacing: 0.04em;
+}
+
+.rsvp-input,
+.rsvp-textarea {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  font-weight: 300;
+  color: #2d2020;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #c2b0a8;
+  padding: 0.5rem 0;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease;
+  resize: none;
+}
+
+.rsvp-input:focus,
+.rsvp-textarea:focus {
+  border-bottom-color: #4a3a3a;
+}
+
+.rsvp-input-short {
+  max-width: 120px;
+}
+
+.rsvp-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.rsvp-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: #2d2020;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+
+.rsvp-radio-label input[type="radio"] {
+  accent-color: #4a3a3a;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.rsvp-submit {
+  align-self: center;
+  margin-top: 1rem;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  letter-spacing: 0.1em;
+  color: #F7F4EF;
+  background-color: #2d2020;
+  border: 1px solid #2d2020;
+  padding: 0.75rem 2.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.rsvp-submit:hover:not(:disabled) {
+  background-color: #4a3a3a;
+  border-color: #4a3a3a;
+}
+
+.rsvp-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.rsvp-success {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.rsvp-success-text {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: #4a3a3a;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+
+.rsvp-error {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 0.95rem;
+  color: #9b2335;
+  font-style: italic;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .rsvp-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .rsvp-radio-group {
+    flex-direction: column;
+    gap: 0.85rem;
   }
 }

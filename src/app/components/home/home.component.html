@@ -13,30 +13,10 @@
     <div class="date-section">
       <p class="wedding-date">{{ t.weddingDate }}</p>
     </div>
-
-    <!-- Countdown Timer -->
-    <div class="countdown-section">
-      <div class="countdown-item">
-        <span class="countdown-value">{{ countdown.days }}</span>
-        <span class="countdown-label">{{ t.days }}</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-value">{{ countdown.hours }}</span>
-        <span class="countdown-label">{{ t.hours }}</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-value">{{ countdown.minutes }}</span>
-        <span class="countdown-label">{{ t.minutes }}</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-value">{{ countdown.seconds }}</span>
-        <span class="countdown-label">{{ t.seconds }}</span>
-      </div>
-    </div>
   </div>
 </main>
 <!-- Welcome section -->
-<section class="welcome-section">
+<section id="welcome" class="welcome-section">
   <div class="welcome-wrapper">
     <div class="welcome-content">
       <h2 class="welcome-title">{{ t.welcomeMessage }}</h2>
@@ -46,86 +26,189 @@
       <span class="welcome-signoff">{{ t.welcomeClosing }}</span>
       <p class="welcome-names">{{ t.welcomeNames }}</p>
     </div>
+  </div>
+</section>
 
-    <aside class="calendar-widget">
-      <div class="calendar-card">
-        <h3 class="calendar-title">October 2026</h3>
-        <div class="cal-grid">
-          <div class="cal-header">SUN</div>
-          <div class="cal-header">MON</div>
-          <div class="cal-header">TUE</div>
-          <div class="cal-header">WED</div>
-          <div class="cal-header">THU</div>
-          <div class="cal-header">FRI</div>
-          <div class="cal-header">SAT</div>
-
-          <div class="cal-day cal-empty"></div>
-          <div class="cal-day cal-empty"></div>
-          <div class="cal-day cal-empty"></div>
-          <div class="cal-day cal-empty"></div>
-          <div class="cal-day">1</div>
-          <div class="cal-day">2</div>
-          <div class="cal-day">3</div>
-
-          <div class="cal-day">4</div>
-          <div class="cal-day">5</div>
-          <div class="cal-day">6</div>
-          <div class="cal-day">7</div>
-          <div class="cal-day">8</div>
-          <div class="cal-day">9</div>
-          <div class="cal-day cal-wedding">
-            <span>10</span>
-          </div>
-
-          <div class="cal-day">11</div>
-          <div class="cal-day">12</div>
-          <div class="cal-day">13</div>
-          <div class="cal-day">14</div>
-          <div class="cal-day">15</div>
-          <div class="cal-day">16</div>
-          <div class="cal-day">17</div>
-
-          <div class="cal-day">18</div>
-          <div class="cal-day">19</div>
-          <div class="cal-day">20</div>
-          <div class="cal-day">21</div>
-          <div class="cal-day">22</div>
-          <div class="cal-day">23</div>
-          <div class="cal-day">24</div>
-
-          <div class="cal-day">25</div>
-          <div class="cal-day">26</div>
-          <div class="cal-day">27</div>
-          <div class="cal-day">28</div>
-          <div class="cal-day">29</div>
-          <div class="cal-day">30</div>
-          <div class="cal-day">31</div>
-        </div>
-      </div>
-    </aside>
+<!-- Countdown Section -->
+<section class="countdown-standalone-section">
+  <div class="countdown-standalone-inner">
+    <div class="countdown-standalone-item">
+      <span class="countdown-standalone-value">{{ countdown.days }}</span>
+      <span class="countdown-standalone-label">{{ t.days }}</span>
+    </div>
+    <div class="countdown-standalone-sep">·</div>
+    <div class="countdown-standalone-item">
+      <span class="countdown-standalone-value">{{ countdown.hours }}</span>
+      <span class="countdown-standalone-label">{{ t.hours }}</span>
+    </div>
+    <div class="countdown-standalone-sep">·</div>
+    <div class="countdown-standalone-item">
+      <span class="countdown-standalone-value">{{ countdown.minutes }}</span>
+      <span class="countdown-standalone-label">{{ t.minutes }}</span>
+    </div>
+    <div class="countdown-standalone-sep">·</div>
+    <div class="countdown-standalone-item">
+      <span class="countdown-standalone-value">{{ countdown.seconds }}</span>
+      <span class="countdown-standalone-label">{{ t.seconds }}</span>
+    </div>
   </div>
 </section>
 
 <!-- Timeline Section -->
-<section id="timeline" class="content-section">
-  <div class="section-content">
-    <h2 class="section-title">{{ t.timelineSection }}</h2>
-    <p class="section-text">Wedding timeline and schedule of events. hello</p>
+<section id="timeline" class="timeline-section">
+  <div class="timeline-wrapper">
+
+    <div class="timeline-title-block">
+      <div class="timeline-title-main">
+        <span class="title-the">{{ t.timelineThe }}</span>
+        <span class="title-wedding">{{ t.timelineWedding }}</span>
+        <span class="title-day">{{ t.timelineDay }}</span>
+      </div>
+      <div class="timeline-title-script">{{ t.timelineScript }}</div>
+    </div>
+
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <p class="timeline-time">{{ t.timelineTime1 }}</p>
+        <p class="timeline-event">{{ t.timelineEvent1 }}</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-time">{{ t.timelineTime2 }}</p>
+        <p class="timeline-event">{{ t.timelineEvent2 }}</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-time">{{ t.timelineTime3 }}</p>
+        <p class="timeline-event">{{ t.timelineEvent3 }}</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-time">{{ t.timelineTime4 }}</p>
+        <p class="timeline-event">{{ t.timelineEvent4 }}</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- Details Section -->
-<section id="details" class="content-section">
-  <div class="section-content">
-    <h2 class="section-title">{{ t.detailsSection }}</h2>
-    <p class="section-text">Venue, accommodations, dress code, and other important details.</p>
+<section id="details" class="details-section">
+  <div class="details-wrapper">
+
+    <h2 class="details-title">{{ t.detailsSection }}</h2>
+
+    <!-- Venues grid -->
+    <div class="details-venues">
+
+      <!-- Ceremony -->
+      <div class="details-block">
+        <p class="details-label">{{ t.detailsCeremony }}</p>
+        <p class="details-address">110 Rue Notre-Dame O<br>Montréal, QC H2Y 1T1</p>
+        <div class="details-map">
+          <iframe
+            title="Ceremony location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.4!2d-73.5573!3d45.5050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a4311b73fb9%3A0xac1a9e6b8b6a7c7e!2s110%20Rue%20Notre-Dame%20O%2C%20Montr%C3%A9al%2C%20QC%20H2Y%201T1!5e0!3m2!1sen!2sca!4v1"
+            width="100%"
+            height="260"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Reception -->
+      <div class="details-block">
+        <p class="details-label">{{ t.detailsReception }}</p>
+        <p class="details-address">405 Rue Saint-Jean-Baptiste<br>Montréal, QC H2Y 2J1</p>
+        <div class="details-map">
+          <iframe
+            title="Reception location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.3!2d-73.5541!3d45.5055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a43b3b3b3b3%3A0xb3b3b3b3b3b3b3b3!2s405%20Rue%20Saint-Jean-Baptiste%2C%20Montr%C3%A9al%2C%20QC%20H2Y%202J1!5e0!3m2!1sen!2sca!4v1"
+            width="100%"
+            height="260"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
 <!-- RSVP Section -->
-<section id="rsvp" class="content-section">
-  <div class="section-content">
-    <h2 class="section-title">{{ t.rsvpSection }}</h2>
-    <p class="section-text">Please RSVP by a specific date to help us plan.</p>
+<section id="rsvp" class="rsvp-section">
+  <div class="rsvp-wrapper">
+
+    <div class="rsvp-header">
+      <h2 class="rsvp-title">{{ t.rsvpSection }}</h2>
+      <p class="rsvp-subtitle">{{ t.rsvpDeadline }}</p>
+    </div>
+
+    <!-- Success state -->
+    <div class="rsvp-success" *ngIf="rsvpSubmitted">
+      <p class="rsvp-success-text">{{ t.rsvpSuccess }}</p>
+    </div>
+
+    <!-- Form -->
+    <form class="rsvp-form" *ngIf="!rsvpSubmitted" (ngSubmit)="submitRsvp()">
+
+      <div class="rsvp-field">
+        <label class="rsvp-label">{{ t.rsvpName }}</label>
+        <input class="rsvp-input" type="text" [(ngModel)]="rsvpForm.name" name="name" required autocomplete="off" />
+      </div>
+
+      <div class="rsvp-field">
+        <label class="rsvp-label">{{ t.rsvpAttending }}</label>
+        <div class="rsvp-radio-group">
+          <label class="rsvp-radio-label">
+            <input type="radio" [(ngModel)]="rsvpForm.attending" name="attending" value="yes" />
+            <span>{{ t.rsvpAttendingYes }}</span>
+          </label>
+          <label class="rsvp-radio-label">
+            <input type="radio" [(ngModel)]="rsvpForm.attending" name="attending" value="no" />
+            <span>{{ t.rsvpAttendingNo }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="rsvp-field" *ngIf="rsvpForm.attending === 'yes'">
+        <label class="rsvp-label">{{ t.rsvpGuests }}</label>
+        <input class="rsvp-input rsvp-input-short" type="number" [(ngModel)]="rsvpForm.guests" name="guests" min="1" max="10" />
+      </div>
+
+      <div class="rsvp-field" *ngIf="rsvpForm.attending === 'yes'">
+        <label class="rsvp-label">{{ t.rsvpMeal }}</label>
+        <div class="rsvp-radio-group">
+          <label class="rsvp-radio-label">
+            <input type="radio" [(ngModel)]="rsvpForm.meal" name="meal" value="meat" />
+            <span>{{ t.rsvpMealMeat }}</span>
+          </label>
+          <label class="rsvp-radio-label">
+            <input type="radio" [(ngModel)]="rsvpForm.meal" name="meal" value="fish" />
+            <span>{{ t.rsvpMealFish }}</span>
+          </label>
+          <label class="rsvp-radio-label">
+            <input type="radio" [(ngModel)]="rsvpForm.meal" name="meal" value="vegetarian" />
+            <span>{{ t.rsvpMealVeg }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="rsvp-field">
+        <label class="rsvp-label">{{ t.rsvpMessage }}</label>
+        <textarea class="rsvp-textarea" [(ngModel)]="rsvpForm.message" name="message" rows="4"></textarea>
+      </div>
+
+      <div class="rsvp-error" *ngIf="rsvpErrored">{{ t.rsvpError }}</div>
+
+      <button class="rsvp-submit" type="submit" [disabled]="rsvpSubmitting || !rsvpForm.name || !rsvpForm.attending">
+        {{ rsvpSubmitting ? '...' : t.rsvpSubmit }}
+      </button>
+
+    </form>
   </div>
 </section>

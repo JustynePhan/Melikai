@@ -1,6 +1,7 @@
-<nav class="navbar">
+<nav class="navbar" [class.hidden]="hidden">
+  <!-- Desktop links -->
   <ul class="navbar-links">
-    <li><a href="#save-the-date" onclick="event.preventDefault(); document.getElementById('save-the-date').scrollIntoView({behavior: 'smooth'})">{{ t.saveTheDate }}</a></li>
+    <li><a href="#welcome" onclick="event.preventDefault(); document.getElementById('welcome')?.scrollIntoView({behavior: 'smooth'})">{{ t.saveTheDate }}</a></li>
     <li><a href="#timeline" onclick="event.preventDefault(); document.getElementById('timeline').scrollIntoView({behavior: 'smooth'})">{{ t.timeline }}</a></li>
     <li><a href="#details" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
     <li><a href="#rsvp" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
@@ -8,4 +9,26 @@
   <button class="language-toggle" (click)="languageService.toggleLanguage()">
     {{ languageService.language === 'en' ? 'FR' : 'EN' }}
   </button>
+
+  <!-- Hamburger button (mobile only) -->
+  <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" [class.open]="menuOpen" (click)="closeMenu()">
+  <div class="mobile-menu-inner" (click)="$event.stopPropagation()">
+    <ul class="mobile-links">
+      <li><a href="#welcome" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('welcome')?.scrollIntoView({behavior: 'smooth'})">{{ t.saveTheDate }}</a></li>
+      <li><a href="#timeline" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('timeline').scrollIntoView({behavior: 'smooth'})">{{ t.timeline }}</a></li>
+      <li><a href="#details" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
+      <li><a href="#rsvp" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
+    </ul>
+    <button class="mobile-lang-toggle" (click)="languageService.toggleLanguage()">
+      {{ languageService.language === 'en' ? 'FR' : 'EN' }}
+    </button>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../shared/language.service';
 import { Navbar } from '../navbar/navbar';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 interface Countdown {
   days: number;
@@ -24,6 +26,7 @@ interface Translations {
   timelineSection: string;
   detailsSection: string;
   rsvpSection: string;
+  rsvpSubtitle: string;
   addToCalendar: string;
   googleCalendar: string;
   outlookCalendar: string;
@@ -34,11 +37,39 @@ interface Translations {
   welcomePara3: string;
   welcomeClosing: string;
   welcomeNames: string;
+  rsvpName: string;
+  rsvpAttending: string;
+  rsvpAttendingYes: string;
+  rsvpAttendingNo: string;
+  rsvpGuests: string;
+  rsvpMeal: string;
+  rsvpMealMeat: string;
+  rsvpMealFish: string;
+  rsvpMealVeg: string;
+  rsvpMessage: string;
+  rsvpSubmit: string;
+  rsvpSuccess: string;
+  rsvpError: string;
+  rsvpDeadline: string;
+  detailsCeremony: string;
+  detailsReception: string;
+  timelineThe: string;
+  timelineWedding: string;
+  timelineDay: string;
+  timelineScript: string;
+  timelineTime1: string;
+  timelineTime2: string;
+  timelineTime3: string;
+  timelineTime4: string;
+  timelineEvent1: string;
+  timelineEvent2: string;
+  timelineEvent3: string;
+  timelineEvent4: string;
 }
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Navbar],
+  imports: [CommonModule, FormsModule, Navbar],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -49,7 +80,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     minutes: 0,
     seconds: 0
   };
-  
+
+  rsvpForm = {
+    name: '',
+    attending: '',
+    guests: 1,
+    meal: '',
+    message: ''
+  };
+  rsvpSubmitting = false;
+  rsvpSubmitted = false;
+  rsvpErrored = false;
+
   translations: { [key: string]: Translations } = {
     en: {
       saveTheDate: 'Save the Date',
@@ -65,6 +107,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineSection: 'Timeline',
       detailsSection: 'Wedding Details',
       rsvpSection: 'RSVP',
+      rsvpSubtitle: 'Please let us know by August 1st, 2026.',
       addToCalendar: 'Add to Your Calendar',
       googleCalendar: 'Google Calendar',
       outlookCalendar: 'Outlook',
@@ -74,7 +117,35 @@ export class HomeComponent implements OnInit, OnDestroy {
       welcomePara2: 'This space has been thoughtfully created to guide you through all the details as our wedding approaches, from venue information and RSVP to the event schedule and other essentials.',
       welcomePara3: 'Having you with us on this day means everything, and we\'re truly excited to share these moments, laughter, and memories together.',
       welcomeClosing: 'With all our love,',
-      welcomeNames: 'Kai & Melina'
+      welcomeNames: 'Kai & Melina',
+      rsvpName: 'Full Name',
+      rsvpAttending: 'Will you be attending?',
+      rsvpAttendingYes: 'Joyfully accepts',
+      rsvpAttendingNo: 'Regretfully declines',
+      rsvpGuests: 'Number of guests (including yourself)',
+      rsvpMeal: 'Meal preference',
+      rsvpMealMeat: 'Meat',
+      rsvpMealFish: 'Fish',
+      rsvpMealVeg: 'Vegetarian',
+      rsvpMessage: 'Message for the couple (optional)',
+      rsvpSubmit: 'Send my RSVP',
+      rsvpSuccess: 'Thank you! Your RSVP has been received. We can\'t wait to celebrate with you.',
+      rsvpError: 'Something went wrong. Please try again or contact us directly.',
+      rsvpDeadline: 'Kindly respond by August 1st, 2026',
+      detailsCeremony: 'Ceremony',
+      detailsReception: 'Reception',
+      timelineThe: 'THE',
+      timelineWedding: 'WEDDING',
+      timelineDay: 'DAY',
+      timelineScript: 'Schedule',
+      timelineTime1: '1:30 PM',
+      timelineTime2: '3:00 PM',
+      timelineTime3: '4:00 PM',
+      timelineTime4: '6:00 PM',
+      timelineEvent1: 'Chapel Ceremony',
+      timelineEvent2: 'Bridal Photo Session',
+      timelineEvent3: 'Cocktail Hour',
+      timelineEvent4: 'Dinner'
     },
     fr: {
       saveTheDate: 'Marquez la Date',
@@ -90,6 +161,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineSection: 'Chronologie',
       detailsSection: 'Détails du Mariage',
       rsvpSection: 'RSVP',
+      rsvpSubtitle: 'Merci de nous répondre avant le 1er août 2026.',
       addToCalendar: 'Ajouter à Votre Calendrier',
       googleCalendar: 'Google Agenda',
       outlookCalendar: 'Outlook',
@@ -99,13 +171,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       welcomePara2: 'Cet espace a été soigneusement conçu pour vous guider à travers tous les détails à l\'approche de notre mariage — des informations sur le lieu et le RSVP au programme et autres essentiels.',
       welcomePara3: 'Avoir votre présence en ce jour signifie tout pour nous, et nous sommes vraiment impatients de partager ces moments, ces rires et ces souvenirs ensemble.',
       welcomeClosing: 'Avec tout notre amour,',
-      welcomeNames: 'Kai & Melina'
+      welcomeNames: 'Kai & Melina',
+      rsvpName: 'Nom complet',
+      rsvpAttending: 'Serez-vous présent(e) ?',
+      rsvpAttendingYes: 'Accepte avec joie',
+      rsvpAttendingNo: 'Décline à regret',
+      rsvpGuests: 'Nombre d\'invités (vous inclus)',
+      rsvpMeal: 'Préférence de repas',
+      rsvpMealMeat: 'Viande',
+      rsvpMealFish: 'Poisson',
+      rsvpMealVeg: 'Végétarien',
+      rsvpMessage: 'Message pour les mariés (optionnel)',
+      rsvpSubmit: 'Envoyer mon RSVP',
+      rsvpSuccess: 'Merci ! Votre RSVP a bien été reçu. Nous avons hâte de fêter ça avec vous.',
+      rsvpError: 'Une erreur s\'est produite. Veuillez réessayer ou nous contacter directement.',
+      rsvpDeadline: 'Merci de répondre avant le 1er août 2026',
+      detailsCeremony: 'Cérémonie',
+      detailsReception: 'Réception',
+      timelineThe: 'LE',
+      timelineWedding: 'GRAND',
+      timelineDay: 'JOUR',
+      timelineScript: 'Programme',
+      timelineTime1: '13h30',
+      timelineTime2: '15h00',
+      timelineTime3: '16h00',
+      timelineTime4: '18h00',
+      timelineEvent1: 'Cérémonie à la chapelle',
+      timelineEvent2: 'Séance photo des mariés',
+      timelineEvent3: 'Cocktail',
+      timelineEvent4: 'Souper'
     }
   };
 
   private countdownInterval: any;
 
-  constructor(private cdr: ChangeDetectorRef, private languageService: LanguageService) {}
+  constructor(private cdr: ChangeDetectorRef, private languageService: LanguageService, private firestore: Firestore) {}
 
   ngOnInit(): void {
     this.updateCountdown();
@@ -118,6 +218,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.countdownInterval) {
       clearInterval(this.countdownInterval);
+    }
+  }
+
+  async submitRsvp(): Promise<void> {
+    if (!this.rsvpForm.name || !this.rsvpForm.attending) return;
+    this.rsvpSubmitting = true;
+    this.rsvpErrored = false;
+    try {
+      await addDoc(collection(this.firestore, 'rsvps'), {
+        ...this.rsvpForm,
+        submittedAt: new Date().toISOString(),
+        language: this.languageService.language
+      });
+      this.rsvpSubmitted = true;
+    } catch {
+      this.rsvpErrored = true;
+    } finally {
+      this.rsvpSubmitting = false;
     }
   }
 
