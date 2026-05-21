@@ -11,7 +11,8 @@ import { LanguageService } from '../../shared/language.service';
 export class Navbar {
   translations = {
     en: { saveTheDate: 'Welcome', timeline: 'Timeline', details: 'Details', rsvp: 'RSVP' },
-    fr: { saveTheDate: 'Bienvenue', timeline: 'Chronologie', details: 'Détails', rsvp: 'RSVP' }
+    fr: { saveTheDate: 'Bienvenue', timeline: 'Chronologie', details: 'Détails', rsvp: 'RSVP' },
+    zh: { saveTheDate: '欢迎', timeline: '时间轴', details: '详情', rsvp: '回复' }
   };
 
   menuOpen = false;

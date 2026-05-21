@@ -6,9 +6,11 @@
     <li><a href="#details" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
     <li><a href="#rsvp" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
   </ul>
-  <button class="language-toggle" (click)="languageService.toggleLanguage()">
-    {{ languageService.language === 'en' ? 'FR' : 'EN' }}
-  </button>
+  <select class="language-toggle" [value]="languageService.language" (change)="languageService.language = $any($event.target).value">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="zh">中文</option>
+  </select>
 
   <!-- Hamburger button (mobile only) -->
   <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Menu">
@@ -27,8 +29,10 @@
       <li><a href="#details" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
       <li><a href="#rsvp" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
     </ul>
-    <button class="mobile-lang-toggle" (click)="languageService.toggleLanguage()">
-      {{ languageService.language === 'en' ? 'FR' : 'EN' }}
-    </button>
+    <select class="mobile-lang-toggle" [value]="languageService.language" (change)="languageService.language = $any($event.target).value">
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="zh">中文</option>
+    </select>
   </div>
 </div>

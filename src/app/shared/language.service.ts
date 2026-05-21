@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
-  language: 'en' | 'fr' = 'en';
+  language: 'en' | 'fr' | 'zh' = 'en';
 
   toggleLanguage(): void {
-    this.language = this.language === 'en' ? 'fr' : 'en';
+    if (this.language === 'en') this.language = 'fr';
+    else if (this.language === 'fr') this.language = 'zh';
+    else this.language = 'en';
   }
 }

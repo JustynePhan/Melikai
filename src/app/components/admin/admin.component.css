@@ -1,0 +1,259 @@
+/* ── Login ─────────────────────────────────────── */
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0d0c;
+}
+
+.login-card {
+  background: #1c1917;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2.5rem 2.75rem;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #f0ece6;
+  margin: 0;
+}
+
+.login-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  color: rgba(240,236,230,0.45);
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.login-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #f0ece6;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  padding: 0.65rem 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login-input:focus {
+  border-color: rgba(255,255,255,0.35);
+}
+
+.login-error {
+  color: #e07070;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.login-btn {
+  background: #f0ece6;
+  color: #0f0d0c;
+  border: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  padding: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.login-btn:hover:not(:disabled) { background: #fff; }
+.login-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Dashboard ──────────────────────────────────── */
+.admin-dashboard {
+  min-height: 100vh;
+  background: #0f0d0c;
+  color: #e8e3dc;
+  padding: 2rem clamp(1rem, 4vw, 3rem) 4rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dash-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #f0ece6;
+  margin: 0;
+}
+
+.dash-header-right {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.refresh-btn, .logout-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(240,236,230,0.7);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover:not(:disabled), .logout-btn:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: #f0ece6;
+}
+
+.refresh-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ── Summary cards ──────────────────────────────── */
+.summary-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.summary-card {
+  background: #1c1917;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  flex: 1;
+}
+
+.summary-card.attending { border-color: rgba(120,200,130,0.3); }
+.summary-card.declining { border-color: rgba(200,100,100,0.3); }
+
+.summary-num {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #f0ece6;
+  line-height: 1;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  color: rgba(240,236,230,0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+
+/* ── Table ──────────────────────────────────────── */
+.table-section {
+  overflow-x: auto;
+}
+
+.rsvp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.rsvp-table thead th {
+  text-align: left;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240,236,230,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.6rem 0.8rem;
+  white-space: nowrap;
+}
+
+.rsvp-table .main-row td {
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: middle;
+  color: #e8e3dc;
+}
+
+.main-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.main-row:hover { background: rgba(255,255,255,0.03); }
+.main-row.expanded { background: rgba(255,255,255,0.05); }
+
+.td-date { color: rgba(240,236,230,0.5); font-size: 0.85rem; white-space: nowrap; }
+.td-name { font-weight: 400; }
+.td-attending.yes { color: #7ec88a; font-size: 1.1rem; }
+.td-attending.no  { color: #e07070; font-size: 1.1rem; }
+.td-message { color: rgba(240,236,230,0.55); font-style: italic; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.td-toggle { color: rgba(240,236,230,0.3); font-size: 0.75rem; text-align: right; padding-right: 0.5rem; }
+
+/* ── Attendee detail sub-table ───────────────────── */
+.detail-row td {
+  padding: 0 0.8rem 1rem 2rem;
+  background: rgba(255,255,255,0.025);
+}
+
+.detail-contact {
+  display: flex;
+  gap: 2rem;
+  padding: 0.6rem 0 0.8rem;
+  font-size: 0.88rem;
+  color: #c8b8a8;
+}
+
+.detail-contact span {
+  opacity: 0.85;
+}
+
+.attendee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.attendee-table thead th {
+  text-align: left;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240,236,230,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0.4rem 0.6rem;
+}
+
+.attendee-table tbody td {
+  padding: 0.45rem 0.6rem;
+  color: #d8d3cc;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* ── Misc ───────────────────────────────────────── */
+.loading-text, .empty-text, .load-error {
+  text-align: center;
+  color: rgba(240,236,230,0.4);
+  font-style: italic;
+  margin-top: 3rem;
+}
+.load-error { color: #e07070; }

@@ -1,0 +1,133 @@
+<!-- Login screen -->
+<div class="admin-login" *ngIf="!user">
+  <div class="login-card">
+    <h1 class="login-title">Admin</h1>
+    <p class="login-sub">Kaige &amp; Melina — RSVP Dashboard</p>
+    <form (ngSubmit)="login()" class="login-form">
+      <input class="login-input" type="email" [(ngModel)]="email" name="email" placeholder="Email" required autocomplete="username" />
+      <input class="login-input" type="password" [(ngModel)]="password" name="password" placeholder="Password" required autocomplete="current-password" />
+      <p class="login-error" *ngIf="loginError">{{ loginError }}</p>
+      <button class="login-btn" type="submit" [disabled]="loginLoading">
+        {{ loginLoading ? '...' : 'Sign in' }}
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div class="admin-dashboard" *ngIf="user">
+  <header class="dash-header">
+    <h1 class="dash-title">RSVP Dashboard</h1>
+    <div class="dash-header-right">
+      <button class="refresh-btn" (click)="loadRsvps()" [disabled]="loading">↻ Refresh</button>
+      <button class="logout-btn" (click)="logout()">Sign out</button>
+    </div>
+  </header>
+
+  <!-- Summary cards -->
+  <section class="summary-grid">
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.totalSubmissions }}</span>
+      <span class="summary-label">Submissions</span>
+    </div>
+    <div class="summary-card attending">
+      <span class="summary-num">{{ totals.totalAttending }}</span>
+      <span class="summary-label">Attending</span>
+    </div>
+    <div class="summary-card declining">
+      <span class="summary-num">{{ totals.totalNotAttending }}</span>
+      <span class="summary-label">Not attending</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.starterSoup }}</span>
+      <span class="summary-label">Soup</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.starterPasta }}</span>
+      <span class="summary-label">Fazzoletti</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.chicken }}</span>
+      <span class="summary-label">Chicken</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.fish }}</span>
+      <span class="summary-label">Black Cod</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.steak }}</span>
+      <span class="summary-label">Rib Steak</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.vegetarian }}</span>
+      <span class="summary-label">Vegetarian</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-num">{{ totals.kid }}</span>
+      <span class="summary-label">Kid's Menu</span>
+    </div>
+  </section>
+
+  <p class="load-error" *ngIf="loadError">{{ loadError }}</p>
+  <p class="loading-text" *ngIf="loading">Loading…</p>
+
+  <!-- Table -->
+  <section class="table-section" *ngIf="!loading && rsvps.length > 0">
+    <table class="rsvp-table">
+      <thead>
+        <tr>
+          <th>Submitted</th>
+          <th>Name</th>
+          <th>Attending</th>
+          <th>Guests</th>
+          <th>Message</th>
+          <th>Lang</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let r of rsvps">
+          <tr class="main-row" [class.expanded]="expandedRow === r.id" (click)="toggleRow(r.id)">
+            <td class="td-date">{{ formatDate(r.submittedAt) }}</td>
+            <td class="td-name">{{ r.submitterName }}</td>
+            <td class="td-attending" [class.yes]="r.attending === 'yes'" [class.no]="r.attending === 'no'">
+              {{ r.attending === 'yes' ? '✓' : '✗' }}
+            </td>
+            <td>{{ r.attending === 'yes' ? r.totalGuests : '—' }}</td>
+            <td class="td-message">{{ r.message || '—' }}</td>
+            <td>{{ r.language }}</td>
+            <td class="td-toggle">{{ expandedRow === r.id ? '▲' : '▼' }}</td>
+          </tr>
+          <tr class="detail-row" *ngIf="expandedRow === r.id && r.attending === 'yes'">
+            <td colspan="7">
+              <div class="detail-contact" *ngIf="r.email || r.phone">
+                <span *ngIf="r.email">✉ {{ r.email }}</span>
+                <span *ngIf="r.phone">📞 {{ r.phone }}</span>
+              </div>
+              <table class="attendee-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Starter</th>
+                    <th>Main course</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of r.attendees; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ a.name || r.submitterName }}</td>
+                    <td>{{ labelStarter(a.starter) }}</td>
+                    <td>{{ labelMain(a.mainCourse) }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="empty-text" *ngIf="!loading && rsvps.length === 0">No RSVPs yet.</p>
+</div>

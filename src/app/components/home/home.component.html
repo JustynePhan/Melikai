@@ -4,7 +4,7 @@
   <div class="hero-content">
     <!-- Couple's Names -->
     <div class="names-section">
-      <h1 class="couple-name">Kai</h1>
+      <h1 class="couple-name">Kaige</h1>
       <p class="and-text">&</p>
       <h1 class="couple-name">Melina</h1>
     </div>
@@ -84,6 +84,10 @@
         <p class="timeline-time">{{ t.timelineTime4 }}</p>
         <p class="timeline-event">{{ t.timelineEvent4 }}</p>
       </div>
+      <div class="timeline-item">
+        <p class="timeline-time">{{ t.timelineTime5 }}</p>
+        <p class="timeline-event">{{ t.timelineEvent5 }}</p>
+      </div>
     </div>
 
   </div>
@@ -101,11 +105,11 @@
       <!-- Ceremony -->
       <div class="details-block">
         <p class="details-label">{{ t.detailsCeremony }}</p>
-        <p class="details-address">110 Rue Notre-Dame O<br>Montréal, QC H2Y 1T1</p>
+        <p class="details-address">424 Rue Saint-Sulpice<br>Montréal, QC H2Y 2V5</p>
         <div class="details-map">
           <iframe
             title="Ceremony location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.4!2d-73.5573!3d45.5050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a4311b73fb9%3A0xac1a9e6b8b6a7c7e!2s110%20Rue%20Notre-Dame%20O%2C%20Montr%C3%A9al%2C%20QC%20H2Y%201T1!5e0!3m2!1sen!2sca!4v1"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.3!2d-73.5562!3d45.5057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a431e1e1e1e%3A0x1e1e1e1e1e1e1e1e!2s424%20Rue%20Saint-Sulpice%2C%20Montr%C3%A9al%2C%20QC%20H2Y%202V5!5e0!3m2!1sen!2sca!4v1"
             width="100%"
             height="260"
             style="border:0;"
@@ -156,56 +160,163 @@
     <!-- Form -->
     <form class="rsvp-form" *ngIf="!rsvpSubmitted" (ngSubmit)="submitRsvp()">
 
-      <div class="rsvp-field">
-        <label class="rsvp-label">{{ t.rsvpName }}</label>
-        <input class="rsvp-input" type="text" [(ngModel)]="rsvpForm.name" name="name" required autocomplete="off" />
-      </div>
-
-      <div class="rsvp-field">
-        <label class="rsvp-label">{{ t.rsvpAttending }}</label>
-        <div class="rsvp-radio-group">
-          <label class="rsvp-radio-label">
-            <input type="radio" [(ngModel)]="rsvpForm.attending" name="attending" value="yes" />
-            <span>{{ t.rsvpAttendingYes }}</span>
-          </label>
-          <label class="rsvp-radio-label">
-            <input type="radio" [(ngModel)]="rsvpForm.attending" name="attending" value="no" />
-            <span>{{ t.rsvpAttendingNo }}</span>
-          </label>
+      <!-- Card 1: Name & Attendance -->
+      <div class="rsvp-card">
+        <div class="rsvp-field">
+          <label class="rsvp-label">{{ t.rsvpName }}</label>
+          <input class="rsvp-input" type="text" [(ngModel)]="rsvpForm.name" name="name" required autocomplete="off" />
+        </div>
+        <div class="rsvp-field">
+          <label class="rsvp-label">{{ t.rsvpAttending }}</label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.attending" name="attending" value="yes" />
+              <span>{{ t.rsvpAttendingYes }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.attending" name="attending" value="no" />
+              <span>{{ t.rsvpAttendingNo }}</span>
+            </label>
+          </div>
+        </div>
+        <div class="rsvp-field" *ngIf="rsvpForm.attending === 'yes'">
+          <label class="rsvp-label">{{ t.rsvpGuests }}</label>
+          <input class="rsvp-input rsvp-input-short" type="number" [(ngModel)]="rsvpForm.totalGuests" name="totalGuests" min="1" max="10" (change)="onGuestCountChange()" />
         </div>
       </div>
 
-      <div class="rsvp-field" *ngIf="rsvpForm.attending === 'yes'">
-        <label class="rsvp-label">{{ t.rsvpGuests }}</label>
-        <input class="rsvp-input rsvp-input-short" type="number" [(ngModel)]="rsvpForm.guests" name="guests" min="1" max="10" />
-      </div>
+      <!-- Card 2: Your menu -->
+      <div class="rsvp-card" *ngIf="rsvpForm.attending === 'yes'">
+        <p class="rsvp-card-title">{{ t.rsvpYourMenu }}</p>
 
-      <div class="rsvp-field" *ngIf="rsvpForm.attending === 'yes'">
-        <label class="rsvp-label">{{ t.rsvpMeal }}</label>
-        <div class="rsvp-radio-group">
-          <label class="rsvp-radio-label">
-            <input type="radio" [(ngModel)]="rsvpForm.meal" name="meal" value="meat" />
-            <span>{{ t.rsvpMealMeat }}</span>
-          </label>
-          <label class="rsvp-radio-label">
-            <input type="radio" [(ngModel)]="rsvpForm.meal" name="meal" value="fish" />
-            <span>{{ t.rsvpMealFish }}</span>
-          </label>
-          <label class="rsvp-radio-label">
-            <input type="radio" [(ngModel)]="rsvpForm.meal" name="meal" value="vegetarian" />
-            <span>{{ t.rsvpMealVeg }}</span>
-          </label>
+        <div class="rsvp-menu-course" *ngIf="rsvpForm.myMainCourse !== 'kid'">
+          <label class="rsvp-label">{{ t.rsvpStarter }}</label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myStarter" name="myStarter" value="soup" />
+              <span>{{ t.rsvpStarterSoup }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myStarter" name="myStarter" value="pasta" />
+              <span>{{ t.rsvpStarterPasta }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rsvp-menu-course">
+          <label class="rsvp-label">{{ t.rsvpMain }}</label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myMainCourse" name="myMainCourse" value="chicken" />
+              <span>{{ t.rsvpMainChicken }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myMainCourse" name="myMainCourse" value="fish" />
+              <span>{{ t.rsvpMainFish }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myMainCourse" name="myMainCourse" value="steak" />
+              <span>{{ t.rsvpMainSteak }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myMainCourse" name="myMainCourse" value="vegetarian" />
+              <span>{{ t.rsvpMainVeg }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="rsvpForm.myMainCourse" name="myMainCourse" value="kid" />
+              <span>{{ t.rsvpMainKid }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rsvp-menu-course">
+          <label class="rsvp-label">{{ t.rsvpDessert }}</label>
+          <p class="rsvp-dessert-note">{{ t.rsvpDessertItem }}</p>
         </div>
       </div>
 
-      <div class="rsvp-field">
-        <label class="rsvp-label">{{ t.rsvpMessage }}</label>
-        <textarea class="rsvp-textarea" [(ngModel)]="rsvpForm.message" name="message" rows="4"></textarea>
+      <!-- Companion cards -->
+      <div class="rsvp-card" *ngFor="let companion of rsvpForm.companions; let i = index">
+        <p class="rsvp-card-title">{{ t.rsvpCompanionTitle }} {{ i + 2 }}</p>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label">{{ t.rsvpCompanionName }}</label>
+          <input class="rsvp-input" type="text" [(ngModel)]="companion.name" [name]="'companionName' + i" autocomplete="off" />
+        </div>
+
+        <div class="rsvp-menu-course" *ngIf="companion.mainCourse !== 'kid'">
+          <label class="rsvp-label">{{ t.rsvpStarter }}</label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.starter" [name]="'companionStarter' + i" value="soup" />
+              <span>{{ t.rsvpStarterSoup }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.starter" [name]="'companionStarter' + i" value="pasta" />
+              <span>{{ t.rsvpStarterPasta }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rsvp-menu-course">
+          <label class="rsvp-label">{{ t.rsvpMain }}</label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.mainCourse" [name]="'companionMain' + i" value="chicken" />
+              <span>{{ t.rsvpMainChicken }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.mainCourse" [name]="'companionMain' + i" value="fish" />
+              <span>{{ t.rsvpMainFish }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.mainCourse" [name]="'companionMain' + i" value="steak" />
+              <span>{{ t.rsvpMainSteak }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.mainCourse" [name]="'companionMain' + i" value="vegetarian" />
+              <span>{{ t.rsvpMainVeg }}</span>
+            </label>
+            <label class="rsvp-radio-label">
+              <input type="radio" [(ngModel)]="companion.mainCourse" [name]="'companionMain' + i" value="kid" />
+              <span>{{ t.rsvpMainKid }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rsvp-menu-course">
+          <label class="rsvp-label">{{ t.rsvpDessert }}</label>
+          <p class="rsvp-dessert-note">{{ t.rsvpDessertItem }}</p>
+        </div>
+      </div>
+
+      <!-- Card: Contact info -->
+      <div class="rsvp-card" *ngIf="rsvpForm.attending === 'yes'">
+        <p class="rsvp-contact-note">{{ t.rsvpContactNote }}</p>
+        <div class="rsvp-contact-fields">
+          <div class="rsvp-field">
+            <label class="rsvp-label">{{ t.rsvpEmail }}</label>
+            <input class="rsvp-input" type="email" [(ngModel)]="rsvpForm.email" name="email" autocomplete="email">
+          </div>
+          <div class="rsvp-field">
+            <label class="rsvp-label">{{ t.rsvpPhone }}</label>
+            <input class="rsvp-input" type="tel" [(ngModel)]="rsvpForm.phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+        <p class="rsvp-contact-error" *ngIf="!rsvpForm.email && !rsvpForm.phone">{{ t.rsvpContactError }}</p>
+      </div>
+
+      <!-- Card: Message -->
+      <div class="rsvp-card">
+        <div class="rsvp-field">
+          <label class="rsvp-label">{{ t.rsvpMessage }}</label>
+          <textarea class="rsvp-textarea" [(ngModel)]="rsvpForm.message" name="message" rows="4"></textarea>
+        </div>
       </div>
 
       <div class="rsvp-error" *ngIf="rsvpErrored">{{ t.rsvpError }}</div>
 
-      <button class="rsvp-submit" type="submit" [disabled]="rsvpSubmitting || !rsvpForm.name || !rsvpForm.attending">
+      <button class="rsvp-submit" type="submit" [disabled]="rsvpSubmitting || !rsvpForm.name || !rsvpForm.attending || (rsvpForm.attending === 'yes' && !rsvpForm.email && !rsvpForm.phone)">
         {{ rsvpSubmitting ? '...' : t.rsvpSubmit }}
       </button>
 

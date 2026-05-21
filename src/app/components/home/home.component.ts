@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, Injector, runInInjectionContext } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../shared/language.service';
@@ -10,6 +10,12 @@ interface Countdown {
   hours: number;
   minutes: number;
   seconds: number;
+}
+
+interface GuestInfo {
+  name: string;
+  starter: string;
+  mainCourse: string;
 }
 
 interface Translations {
@@ -42,10 +48,24 @@ interface Translations {
   rsvpAttendingYes: string;
   rsvpAttendingNo: string;
   rsvpGuests: string;
-  rsvpMeal: string;
-  rsvpMealMeat: string;
-  rsvpMealFish: string;
-  rsvpMealVeg: string;
+  rsvpStarter: string;
+  rsvpStarterSoup: string;
+  rsvpStarterPasta: string;
+  rsvpMain: string;
+  rsvpMainChicken: string;
+  rsvpMainFish: string;
+  rsvpMainSteak: string;
+  rsvpMainVeg: string;
+  rsvpDessert: string;
+  rsvpDessertItem: string;
+  rsvpMainKid: string;
+  rsvpYourMenu: string;
+  rsvpCompanionTitle: string;
+  rsvpCompanionName: string;
+  rsvpEmail: string;
+  rsvpPhone: string;
+  rsvpContactNote: string;
+  rsvpContactError: string;
   rsvpMessage: string;
   rsvpSubmit: string;
   rsvpSuccess: string;
@@ -61,10 +81,12 @@ interface Translations {
   timelineTime2: string;
   timelineTime3: string;
   timelineTime4: string;
+  timelineTime5: string;
   timelineEvent1: string;
   timelineEvent2: string;
   timelineEvent3: string;
   timelineEvent4: string;
+  timelineEvent5: string;
 }
 
 @Component({
@@ -84,8 +106,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   rsvpForm = {
     name: '',
     attending: '',
-    guests: 1,
-    meal: '',
+    totalGuests: 1,
+    myStarter: '',
+    myMainCourse: '',
+    companions: [] as GuestInfo[],
+    email: '',
+    phone: '',
     message: ''
   };
   rsvpSubmitting = false;
@@ -107,7 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineSection: 'Timeline',
       detailsSection: 'Wedding Details',
       rsvpSection: 'RSVP',
-      rsvpSubtitle: 'Please let us know by August 1st, 2026.',
+      rsvpSubtitle: 'Please respond by September 1st, 2026. After that date, no response will be considered as not attending.',
       addToCalendar: 'Add to Your Calendar',
       googleCalendar: 'Google Calendar',
       outlookCalendar: 'Outlook',
@@ -117,35 +143,51 @@ export class HomeComponent implements OnInit, OnDestroy {
       welcomePara2: 'This space has been thoughtfully created to guide you through all the details as our wedding approaches, from venue information and RSVP to the event schedule and other essentials.',
       welcomePara3: 'Having you with us on this day means everything, and we\'re truly excited to share these moments, laughter, and memories together.',
       welcomeClosing: 'With all our love,',
-      welcomeNames: 'Kai & Melina',
+      welcomeNames: 'Kaige & Melina',
       rsvpName: 'Full Name',
       rsvpAttending: 'Will you be attending?',
       rsvpAttendingYes: 'Joyfully accepts',
       rsvpAttendingNo: 'Regretfully declines',
       rsvpGuests: 'Number of guests (including yourself)',
-      rsvpMeal: 'Meal preference',
-      rsvpMealMeat: 'Meat',
-      rsvpMealFish: 'Fish',
-      rsvpMealVeg: 'Vegetarian',
+      rsvpStarter: 'Starter',
+      rsvpStarterSoup: 'Soup of the day',
+      rsvpStarterPasta: 'Fazzoletti stuffed with ricotta and spinach, rosé sauce',
+      rsvpMain: 'Main course',
+      rsvpMainChicken: 'Chicken supreme with drumettes, garlic mashed potatoes and grilled vegetables',
+      rsvpMainFish: 'Miso-glazed black cod with wild rice and sautéed spinach',
+      rsvpMainSteak: '16oz bone-in rib steak, garlic mashed potatoes and vegetables',
+      rsvpMainVeg: 'Vegetarian: Cavatelli with truffle, wild mushrooms, black truffle oil, house tomato sauce, arugula',
+      rsvpDessert: 'Dessert',
+      rsvpDessertItem: 'White and dark chocolate mousse cake — with coffee or tea',
+      rsvpMainKid: 'Kid\'s menu',
+      rsvpYourMenu: 'Your menu',
+      rsvpCompanionTitle: 'Guest',
+      rsvpCompanionName: 'Full name',
+      rsvpEmail: 'Email address',
+      rsvpPhone: 'Phone number',
+      rsvpContactNote: 'Please provide at least one so we can send you a reminder.',
+      rsvpContactError: 'Please provide an email or phone number to continue.',
       rsvpMessage: 'Message for the couple (optional)',
       rsvpSubmit: 'Send my RSVP',
       rsvpSuccess: 'Thank you! Your RSVP has been received. We can\'t wait to celebrate with you.',
       rsvpError: 'Something went wrong. Please try again or contact us directly.',
-      rsvpDeadline: 'Kindly respond by August 1st, 2026',
+      rsvpDeadline: 'Kindly respond by September 1st, 2026',
       detailsCeremony: 'Ceremony',
       detailsReception: 'Reception',
       timelineThe: 'THE',
       timelineWedding: 'WEDDING',
       timelineDay: 'DAY',
       timelineScript: 'Schedule',
-      timelineTime1: '1:30 PM',
-      timelineTime2: '3:00 PM',
-      timelineTime3: '4:00 PM',
-      timelineTime4: '6:00 PM',
-      timelineEvent1: 'Chapel Ceremony',
-      timelineEvent2: 'Bridal Photo Session',
-      timelineEvent3: 'Cocktail Hour',
-      timelineEvent4: 'Dinner'
+      timelineTime1: '1:00 PM',
+      timelineTime2: '1:30 PM',
+      timelineTime3: '3:00 PM',
+      timelineTime4: '4:00 PM',
+      timelineTime5: '6:00 PM',
+      timelineEvent1: 'Guest Arrival',
+      timelineEvent2: 'Chapel Ceremony',
+      timelineEvent3: 'Bridal Photo Session',
+      timelineEvent4: 'Cocktail Hour',
+      timelineEvent5: 'Dinner'
     },
     fr: {
       saveTheDate: 'Marquez la Date',
@@ -161,7 +203,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineSection: 'Chronologie',
       detailsSection: 'Détails du Mariage',
       rsvpSection: 'RSVP',
-      rsvpSubtitle: 'Merci de nous répondre avant le 1er août 2026.',
+      rsvpSubtitle: 'Merci de répondre avant le 1er septembre 2026. Passé cette date, l\'absence de réponse sera considérée comme un refus.',
       addToCalendar: 'Ajouter à Votre Calendrier',
       googleCalendar: 'Google Agenda',
       outlookCalendar: 'Outlook',
@@ -171,41 +213,127 @@ export class HomeComponent implements OnInit, OnDestroy {
       welcomePara2: 'Cet espace a été soigneusement conçu pour vous guider à travers tous les détails à l\'approche de notre mariage — des informations sur le lieu et le RSVP au programme et autres essentiels.',
       welcomePara3: 'Avoir votre présence en ce jour signifie tout pour nous, et nous sommes vraiment impatients de partager ces moments, ces rires et ces souvenirs ensemble.',
       welcomeClosing: 'Avec tout notre amour,',
-      welcomeNames: 'Kai & Melina',
+      welcomeNames: 'Kaige & Melina',
       rsvpName: 'Nom complet',
       rsvpAttending: 'Serez-vous présent(e) ?',
       rsvpAttendingYes: 'Accepte avec joie',
       rsvpAttendingNo: 'Décline à regret',
       rsvpGuests: 'Nombre d\'invités (vous inclus)',
-      rsvpMeal: 'Préférence de repas',
-      rsvpMealMeat: 'Viande',
-      rsvpMealFish: 'Poisson',
-      rsvpMealVeg: 'Végétarien',
+      rsvpStarter: 'Entrée',
+      rsvpStarterSoup: 'Soupe du jour',
+      rsvpStarterPasta: 'Fazzoletti, farcis à la ricotta et aux épinards, sauce rosée',
+      rsvpMain: 'Plat principal',
+      rsvpMainChicken: 'Suprême de poulet avec manchons, purée de pommes de terre à l\'ail et légumes grillés',
+      rsvpMainFish: 'Morue noire laquée au miso avec riz sauvage et sauté d\'épinards',
+      rsvpMainSteak: 'Bifteck de côte sur os 16oz, purée de pommes de terre à l\'ail et légumes',
+      rsvpMainVeg: 'Végétarien : Cavatellia la truffe, champignons sauvages, huile de truffe noire, sauce tomate maison, roquette',
+      rsvpDessert: 'Dessert',
+      rsvpDessertItem: 'Étagé de mousse de chocolat blanc et noir — avec café ou thé',
+      rsvpMainKid: 'Menu enfant',
+      rsvpYourMenu: 'Votre menu',
+      rsvpCompanionTitle: 'Invité',
+      rsvpCompanionName: 'Nom complet',
+      rsvpEmail: 'Adresse courriel',
+      rsvpPhone: 'Numéro de téléphone',
+      rsvpContactNote: 'Veuillez fournir l\'un ou l\'autre pour qu\'on puisse vous envoyer un rappel.',
+      rsvpContactError: 'Veuillez fournir un courriel ou un numéro pour continuer.',
       rsvpMessage: 'Message pour les mariés (optionnel)',
       rsvpSubmit: 'Envoyer mon RSVP',
       rsvpSuccess: 'Merci ! Votre RSVP a bien été reçu. Nous avons hâte de fêter ça avec vous.',
       rsvpError: 'Une erreur s\'est produite. Veuillez réessayer ou nous contacter directement.',
-      rsvpDeadline: 'Merci de répondre avant le 1er août 2026',
+      rsvpDeadline: 'Merci de répondre avant le 1er septembre 2026',
       detailsCeremony: 'Cérémonie',
       detailsReception: 'Réception',
       timelineThe: 'LE',
       timelineWedding: 'GRAND',
       timelineDay: 'JOUR',
       timelineScript: 'Programme',
-      timelineTime1: '13h30',
-      timelineTime2: '15h00',
-      timelineTime3: '16h00',
-      timelineTime4: '18h00',
-      timelineEvent1: 'Cérémonie à la chapelle',
-      timelineEvent2: 'Séance photo des mariés',
-      timelineEvent3: 'Cocktail',
-      timelineEvent4: 'Souper'
+      timelineTime1: '13h00',
+      timelineTime2: '13h30',
+      timelineTime3: '15h00',
+      timelineTime4: '16h00',
+      timelineTime5: '18h00',
+      timelineEvent1: 'Arrivée des invités',
+      timelineEvent2: 'Cérémonie à la chapelle',
+      timelineEvent3: 'Séance photo des mariés',
+      timelineEvent4: 'Cocktail',
+      timelineEvent5: 'Souper'
+    },
+    zh: {
+      saveTheDate: '保存日期',
+      details: '详情',
+      timeline: '时间轴',
+      rsvp: '回复',
+      weddingDate: '2026年10月10日',
+      days: '天',
+      hours: '小时',
+      minutes: '分钟',
+      seconds: '秒',
+      saveTheDateSection: '保存日期',
+      timelineSection: '时间轴',
+      detailsSection: '婚礼详情',
+      rsvpSection: '回复',
+      rsvpSubtitle: '请在2026年9月1日前回复。逾期未回复将被视为不出席。',
+      addToCalendar: '添加到日历',
+      googleCalendar: 'Google 日历',
+      outlookCalendar: 'Outlook',
+      appleCalendar: 'Apple 日历',
+      welcomeMessage: '诚邀您的到来',
+      welcomePara1: '我们非常高兴您能在这里，迫不及待与您共同庆祝这一特别时刻。',
+      welcomePara2: '这个空间是为您精心打造的，将引导您了解婚礼临近时的所有细节——从场地信息和回复到活动日程及其他要点。',
+      welcomePara3: '您的陪伴对我们意义非凡，我们真心期待与您共享这些时刻、笑声和美好回忆。',
+      welcomeClosing: '满怀爱意，',
+      welcomeNames: 'Kaige & Melina',
+      rsvpName: '姓名',
+      rsvpAttending: '您是否出席？',
+      rsvpAttendingYes: '欣然接受',
+      rsvpAttendingNo: '遗憾婉拒',
+      rsvpGuests: '宾客人数（包括您本人）',
+      rsvpStarter: '前菜',
+      rsvpStarterSoup: '每日例汤',
+      rsvpStarterPasta: '芝士菠菜意式馄饨，玫瑰酱',
+      rsvpMain: '主菜',
+      rsvpMainChicken: '脆皮鸡胸配蒜香土豆泥和烤蔬菜',
+      rsvpMainFish: '味噌黑鳕鱼配野米和炒菠菜',
+      rsvpMainSteak: '16盎司带骨肋眼牛排，蒜香土豆泥和蔬菜',
+      rsvpMainVeg: '素食：松露卡瓦特里意面，野生蘑菇，黑松露油，自制番茄酱，芝麻菜',
+      rsvpDessert: '甜点',
+      rsvpDessertItem: '白巧克力与黑巧克力慕斯层蛋糕 — 附咖啡或茶',
+      rsvpMainKid: '儿童菜单',
+      rsvpYourMenu: '您的菜单',
+      rsvpCompanionTitle: '宾客',
+      rsvpCompanionName: '姓名',
+      rsvpEmail: '电子邮件地址',
+      rsvpPhone: '电话号码',
+      rsvpContactNote: '请至少提供一种，以便我们发送提醒。',
+      rsvpContactError: '请填写邮件或电话才能继续。',
+      rsvpMessage: '给新人的留言（可选）',
+      rsvpSubmit: '提交回复',
+      rsvpSuccess: '谢谢！我们已收到您的回复，期待与您共同庆祝。',
+      rsvpError: '出现了一些问题，请重试或直接联系我们。',
+      rsvpDeadline: '请在2026年9月1日前回复',
+      detailsCeremony: '仪式',
+      detailsReception: '婚宴',
+      timelineThe: '婚',
+      timelineWedding: '礼',
+      timelineDay: '当天',
+      timelineScript: '日程',
+      timelineTime1: '下先1:00',
+      timelineTime2: '下先1:30',
+      timelineTime3: '下先3:00',
+      timelineTime4: '下先4:00',
+      timelineTime5: '下先6:00',
+      timelineEvent1: '宾客入場',
+      timelineEvent2: '教堂仪式',
+      timelineEvent3: '新人婚纱照',
+      timelineEvent4: '鸡尾酒时间',
+      timelineEvent5: '晚宴'
     }
   };
 
   private countdownInterval: any;
 
-  constructor(private cdr: ChangeDetectorRef, private languageService: LanguageService, private firestore: Firestore) {}
+  constructor(private cdr: ChangeDetectorRef, private languageService: LanguageService, private firestore: Firestore, private injector: Injector) {}
 
   ngOnInit(): void {
     this.updateCountdown();
@@ -221,18 +349,50 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  onGuestCountChange(): void {
+    const count = Math.max(1, Math.min(10, this.rsvpForm.totalGuests || 1));
+    this.rsvpForm.totalGuests = count;
+    const needed = count - 1;
+    while (this.rsvpForm.companions.length < needed) {
+      this.rsvpForm.companions.push({ name: '', starter: '', mainCourse: '' });
+    }
+    this.rsvpForm.companions.splice(needed);
+  }
+
   async submitRsvp(): Promise<void> {
     if (!this.rsvpForm.name || !this.rsvpForm.attending) return;
+    if (this.rsvpForm.attending === 'yes' && !this.rsvpForm.email && !this.rsvpForm.phone) return;
     this.rsvpSubmitting = true;
     this.rsvpErrored = false;
     try {
-      await addDoc(collection(this.firestore, 'rsvps'), {
-        ...this.rsvpForm,
-        submittedAt: new Date().toISOString(),
-        language: this.languageService.language
-      });
+      const attendees: GuestInfo[] = this.rsvpForm.attending === 'yes' ? [
+        {
+          name: this.rsvpForm.name,
+          starter: this.rsvpForm.myMainCourse === 'kid' ? 'kid' : this.rsvpForm.myStarter,
+          mainCourse: this.rsvpForm.myMainCourse
+        },
+        ...this.rsvpForm.companions.map(c => ({
+          name: c.name,
+          starter: c.mainCourse === 'kid' ? 'kid' : c.starter,
+          mainCourse: c.mainCourse
+        }))
+      ] : [];
+      await runInInjectionContext(this.injector, () =>
+        addDoc(collection(this.firestore, 'rsvps'), {
+          submitterName: this.rsvpForm.name,
+          attending: this.rsvpForm.attending,
+          totalGuests: this.rsvpForm.attending === 'yes' ? this.rsvpForm.totalGuests : 0,
+          attendees,
+          email: this.rsvpForm.email,
+          phone: this.rsvpForm.phone,
+          message: this.rsvpForm.message,
+          submittedAt: new Date().toISOString(),
+          language: this.languageService.language
+        })
+      );
       this.rsvpSubmitted = true;
-    } catch {
+    } catch (err) {
+      console.error('Firestore write failed:', err);
       this.rsvpErrored = true;
     } finally {
       this.rsvpSubmitting = false;
@@ -240,22 +400,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   addToGoogleCalendar(): void {
-    const event = encodeURIComponent('Kai & Melina\'s Wedding');
-    const details = encodeURIComponent('Celebrating the wedding of Kai and Melina');
+    const event = encodeURIComponent('Kaige & Melina\'s Wedding');
+    const details = encodeURIComponent('Celebrating the wedding of Kaige and Melina');
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${event}&details=${details}&dates=20261010/20261011`;
     window.open(url, '_blank');
   }
 
   addToOutlook(): void {
-    const event = encodeURIComponent('Kai & Melina\'s Wedding');
-    const details = encodeURIComponent('Celebrating the wedding of Kai and Melina');
+    const event = encodeURIComponent('Kaige & Melina\'s Wedding');
+    const details = encodeURIComponent('Celebrating the wedding of Kaige and Melina');
     const url = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${event}&body=${details}&startdt=2026-10-10&enddt=2026-10-11`;
     window.open(url, '_blank');
   }
 
   addToAppleCalendar(): void {
-    const event = encodeURIComponent('Kai & Melina\'s Wedding');
-    const details = encodeURIComponent('Celebrating the wedding of Kai and Melina');
+    const event = encodeURIComponent('Kaige & Melina\'s Wedding');
+    const details = encodeURIComponent('Celebrating the wedding of Kaige and Melina');
     const url = `data:text/calendar,BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//My Event//EN
@@ -263,14 +423,14 @@ CALSCALE:GREGORIAN
 BEGIN:VEVENT
 DTSTART:20261010
 DTEND:20261011
-SUMMARY:Kai & Melina's Wedding
-DESCRIPTION:Celebrating the wedding of Kai and Melina
+SUMMARY:Kaige & Melina's Wedding
+DESCRIPTION:Celebrating the wedding of Kaige and Melina
 UID:1@example.com
 END:VEVENT
 END:VCALENDAR`;
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'kai-melina-wedding.ics';
+    link.download = 'kaige-melina-wedding.ics';
     link.click();
   }
 

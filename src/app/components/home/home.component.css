@@ -350,8 +350,8 @@
   align-items: center;
   position: relative;
   background-image: url('/countdown.jpg');
-  background-size: cover;
-  background-position: center;
+  background-size: 120%;
+  background-position: 35% center;
   background-attachment: scroll;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -587,10 +587,25 @@
   .timeline-item {
     border-left: none;
     padding-left: 0;
-    border-top: 1px solid rgba(26, 26, 26, 0.15);
-    padding-top: 1.5rem;
+    border-top: none;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
     align-items: center;
     text-align: center;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    display: block;
+    width: 65%;
+    height: 1px;
+    background-color: rgba(200, 190, 182, 0.45);
+    margin: 0 auto 1.75rem;
+  }
+
+  .timeline-item:first-child::before {
+    display: none;
   }
 
   .timeline-list {
@@ -1042,7 +1057,7 @@
   font-style: italic;
   font-weight: 300;
   font-size: clamp(2rem, 5vw, 3rem);
-  color: #2d2020;
+  color: #110808;
   margin: 0 0 0.75rem;
   letter-spacing: 0.03em;
 }
@@ -1050,9 +1065,9 @@
 .rsvp-subtitle {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(1rem, 2vw, 1.15rem);
-  color: #7a6a6a;
+  color: #1a0f0f;
   margin: 0;
   letter-spacing: 0.04em;
 }
@@ -1060,7 +1075,34 @@
 .rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.rsvp-card {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(180, 155, 145, 0.3);
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.rsvp-card-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  color: #0d0606;
+  margin: 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(180, 155, 145, 0.3);
+}
+
+.rsvp-menu-course {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .rsvp-field {
@@ -1072,21 +1114,50 @@
 .rsvp-label {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  color: #4a3a3a;
+  color: #0d0606;
   letter-spacing: 0.04em;
+}
+
+.rsvp-dessert-note {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.9rem, 1.7vw, 1rem);
+  font-weight: 500;
+  font-style: italic;
+  color: #1a0a0a;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.rsvp-guest-block {
+  border-top: 1px solid rgba(180, 155, 145, 0.35);
+  padding-top: 1.75rem;
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rsvp-guest-title {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #0d0606;
+  letter-spacing: 0.08em;
+  margin: 0;
 }
 
 .rsvp-input,
 .rsvp-textarea {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-  font-weight: 300;
-  color: #2d2020;
+  font-weight: 500;
+  color: #0d0606;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #c2b0a8;
+  border-bottom: 1px solid #9a8880;
   padding: 0.5rem 0;
   outline: none;
   width: 100%;
@@ -1097,6 +1168,40 @@
 .rsvp-input:focus,
 .rsvp-textarea:focus {
   border-bottom-color: #4a3a3a;
+}
+
+.rsvp-contact-block {
+  border-top: 1px solid #e8ddd8;
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.rsvp-contact-note {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+  font-style: italic;
+  font-weight: 500;
+  color: #3a2a2a;
+  margin: 0;
+}
+
+.rsvp-contact-fields {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.rsvp-contact-fields .rsvp-field {
+  flex: 1;
+  min-width: 180px;
+}
+
+.rsvp-contact-error {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.85rem, 1.6vw, 0.92rem);
+  font-style: italic;
+  color: #9b3a3a;
+  margin: 0.6rem 0 0 0;
 }
 
 .rsvp-input-short {
@@ -1115,9 +1220,9 @@
   gap: 0.5rem;
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 600;
   font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-  color: #2d2020;
+  color: #0d0606;
   cursor: pointer;
   letter-spacing: 0.03em;
 }
@@ -1184,8 +1289,17 @@
     padding: 4rem 1.5rem;
   }
 
+  .rsvp-card {
+    padding: 1.5rem 1.25rem;
+  }
+
   .rsvp-radio-group {
     flex-direction: column;
     gap: 0.85rem;
+  }
+
+  .rsvp-contact-fields {
+    flex-direction: column;
+    gap: 0;
   }
 }

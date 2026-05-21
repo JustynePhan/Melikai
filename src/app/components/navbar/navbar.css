@@ -52,10 +52,10 @@
   color: rgba(255, 255, 255, 1);
 }
 
-/* Language Toggle Button */
+/* Language Toggle Select */
 .language-toggle {
   position: relative;
-  background: none;
+  background: #1a1714;
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: rgba(255, 255, 255, 0.75);
   font-family: 'Cormorant Garamond', 'Georgia', serif;
@@ -67,12 +67,21 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.language-toggle option {
+  background: #1a1714;
+  color: #f0ece6;
+  font-style: normal;
 }
 
 .language-toggle:hover {
   color: rgba(255, 255, 255, 1);
   border-color: rgba(255, 255, 255, 0.7);
-  background: transparent;
+  background: #2a2522;
 }
 
 /* Hamburger Button (hidden on desktop) */
@@ -175,7 +184,7 @@
 }
 
 .mobile-lang-toggle {
-  background: none;
+  background: #1a1714;
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.75rem;
@@ -185,6 +194,15 @@
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.mobile-lang-toggle option {
+  background: #1a1714;
+  color: #f0ece6;
+  text-transform: none;
 }
 
 .mobile-lang-toggle:hover {

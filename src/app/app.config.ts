@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCfZtzc2wpT9k5caiybN_jaj6ubrczFm2c",
@@ -22,5 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
   ]
 };
