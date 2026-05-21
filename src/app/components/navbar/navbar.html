@@ -6,11 +6,22 @@
     <li><a href="#details" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
     <li><a href="#rsvp" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
   </ul>
-  <select class="language-toggle" [value]="languageService.language" (change)="languageService.language = $any($event.target).value">
-    <option value="en">English</option>
-    <option value="fr">Français</option>
-    <option value="zh">中文</option>
-  </select>
+  <div class="lang-selector" [class.open]="langOpen">
+    <button class="lang-btn" (click)="toggleLang()" type="button">
+      <span>{{ languageService.language === 'en' ? 'EN' : languageService.language === 'fr' ? 'FR' : 'ZH' }}</span>
+      <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <ul class="lang-dropdown">
+      <li *ngFor="let lang of languages"
+          class="lang-option"
+          [class.active]="languageService.language === lang.code"
+          (click)="setLanguage(lang.code)">
+        {{ lang.label }}
+      </li>
+    </ul>
+  </div>
 
   <!-- Hamburger button (mobile only) -->
   <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Menu">
@@ -29,10 +40,21 @@
       <li><a href="#details" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('details').scrollIntoView({behavior: 'smooth'})">{{ t.details }}</a></li>
       <li><a href="#rsvp" (click)="closeMenu()" onclick="event.preventDefault(); document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">{{ t.rsvp }}</a></li>
     </ul>
-    <select class="mobile-lang-toggle" [value]="languageService.language" (change)="languageService.language = $any($event.target).value">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="zh">中文</option>
-    </select>
+    <div class="lang-selector mobile-lang-selector" [class.open]="langOpen">
+      <button class="lang-btn" (click)="toggleLang()" type="button">
+        <span>{{ languageService.language === 'en' ? 'English' : languageService.language === 'fr' ? 'Français' : '中文' }}</span>
+        <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul class="lang-dropdown">
+        <li *ngFor="let lang of languages"
+            class="lang-option"
+            [class.active]="languageService.language === lang.code"
+            (click)="setLanguage(lang.code)">
+          {{ lang.label }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -122,6 +122,26 @@
   transition: all 0.2s;
 }
 
+.export-btn {
+  background: none;
+  border: 1px solid rgba(210, 180, 140, 0.45);
+  color: #d4b896;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.export-btn:hover:not(:disabled) {
+  border-color: #d4b896;
+  color: #f0ece6;
+  background: rgba(212, 184, 150, 0.08);
+}
+
+.export-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
 .refresh-btn:hover:not(:disabled), .logout-btn:hover {
   border-color: rgba(255,255,255,0.5);
   color: #f0ece6;
@@ -215,16 +235,65 @@
   background: rgba(255,255,255,0.025);
 }
 
-.detail-contact {
+.detail-contact-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,184,150,0.2);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0;
   display: flex;
-  gap: 2rem;
-  padding: 0.6rem 0 0.8rem;
-  font-size: 0.88rem;
-  color: #c8b8a8;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.detail-contact span {
-  opacity: 0.85;
+.detail-section-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #d4b896;
+  margin: 0 0 0.35rem;
+  opacity: 0.9;
+}
+
+.detail-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-contact-icon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.detail-contact-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: rgba(240,236,230,0.45);
+  min-width: 44px;
+  text-transform: uppercase;
+}
+
+.detail-contact-value {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95rem;
+  color: #e8ddd4;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.detail-contact-value:hover {
+  color: #d4b896;
+  text-decoration: underline;
+}
+
+.detail-no-contact {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(240,236,230,0.3);
+  padding: 0.5rem 0;
 }
 
 .attendee-table {

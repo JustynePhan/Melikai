@@ -16,8 +16,15 @@ export class Navbar {
   };
 
   menuOpen = false;
+  langOpen = false;
   hidden = false;
   private lastScrollY = 0;
+
+  readonly languages = [
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+    { code: 'zh', label: '中文' }
+  ];
 
   constructor(public languageService: LanguageService) {}
 
@@ -38,5 +45,22 @@ export class Navbar {
 
   closeMenu() {
     this.menuOpen = false;
+  }
+
+  toggleLang() {
+    this.langOpen = !this.langOpen;
+  }
+
+  setLanguage(code: string) {
+    this.languageService.language = code as 'en' | 'fr' | 'zh';
+    this.langOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.lang-selector')) {
+      this.langOpen = false;
+    }
   }
 }

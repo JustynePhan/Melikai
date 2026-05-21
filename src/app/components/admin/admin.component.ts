@@ -157,6 +157,57 @@ export class AdminComponent implements OnInit {
     return map[value] ?? value;
   }
 
+  exportCsv(): void {
+    const escape = (v: string | undefined | null) => {
+      if (v == null) return '';
+      const s = String(v);
+      return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+
+    const headers = [
+      'Submitted', 'Submitter Name', 'Attending', 'Total Guests',
+      'Email', 'Phone', 'Message', 'Language',
+      'Guest #', 'Guest Name', 'Starter', 'Main Course'
+    ].join(',');
+
+    const rows: string[] = [];
+    for (const r of this.rsvps) {
+      const base = [
+        escape(this.formatDate(r.submittedAt)),
+        escape(r.submitterName),
+        escape(r.attending),
+        escape(String(r.attending === 'yes' ? r.totalGuests : 0)),
+        escape(r.email),
+        escape(r.phone),
+        escape(r.message),
+        escape(r.language)
+      ].join(',');
+
+      if (r.attending === 'yes' && r.attendees?.length) {
+        r.attendees.forEach((a, i) => {
+          rows.push([
+            base,
+            escape(String(i + 1)),
+            escape(a.name),
+            escape(this.labelStarter(a.starter)),
+            escape(this.labelMain(a.mainCourse))
+          ].join(','));
+        });
+      } else {
+        rows.push(`${base},,,,`);
+      }
+    }
+
+    const csv = [headers, ...rows].join('\n');
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `rsvps-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   get totals(): Totals {
     const t: Totals = { totalSubmissions: 0, totalAttending: 0, totalNotAttending: 0, chicken: 0, fish: 0, steak: 0, vegetarian: 0, kid: 0, starterSoup: 0, starterPasta: 0 };
     for (const r of this.rsvps) {

@@ -19,6 +19,7 @@
   <header class="dash-header">
     <h1 class="dash-title">RSVP Dashboard</h1>
     <div class="dash-header-right">
+      <button class="export-btn" (click)="exportCsv()" [disabled]="rsvps.length === 0">&#8595; Export CSV</button>
       <button class="refresh-btn" (click)="loadRsvps()" [disabled]="loading">↻ Refresh</button>
       <button class="logout-btn" (click)="logout()">Sign out</button>
     </div>
@@ -98,30 +99,50 @@
             <td>{{ r.language }}</td>
             <td class="td-toggle">{{ expandedRow === r.id ? '▲' : '▼' }}</td>
           </tr>
-          <tr class="detail-row" *ngIf="expandedRow === r.id && r.attending === 'yes'">
+          <tr class="detail-row" *ngIf="expandedRow === r.id">
             <td colspan="7">
-              <div class="detail-contact" *ngIf="r.email || r.phone">
-                <span *ngIf="r.email">✉ {{ r.email }}</span>
-                <span *ngIf="r.phone">📞 {{ r.phone }}</span>
+
+              <!-- Contact info -->
+              <div class="detail-contact-card" *ngIf="r.email || r.phone">
+                <p class="detail-section-label">Contact Information</p>
+                <div class="detail-contact-row" *ngIf="r.email">
+                  <span class="detail-contact-icon">✉️</span>
+                  <span class="detail-contact-label">Email</span>
+                  <a class="detail-contact-value" [href]="'mailto:' + r.email">{{ r.email }}</a>
+                </div>
+                <div class="detail-contact-row" *ngIf="r.phone">
+                  <span class="detail-contact-icon">📞</span>
+                  <span class="detail-contact-label">Phone</span>
+                  <a class="detail-contact-value" [href]="'tel:' + r.phone">{{ r.phone }}</a>
+                </div>
               </div>
-              <table class="attendee-table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Starter</th>
-                    <th>Main course</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let a of r.attendees; let i = index">
-                    <td>{{ i + 1 }}</td>
-                    <td>{{ a.name || r.submitterName }}</td>
-                    <td>{{ labelStarter(a.starter) }}</td>
-                    <td>{{ labelMain(a.mainCourse) }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="detail-no-contact" *ngIf="!r.email && !r.phone">
+                No contact info provided
+              </div>
+
+              <!-- Menu table -->
+              <ng-container *ngIf="r.attending === 'yes' && r.attendees?.length">
+                <p class="detail-section-label" style="margin-top:1.25rem">Menu Choices</p>
+                <table class="attendee-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Starter</th>
+                      <th>Main course</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let a of r.attendees; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ a.name || r.submitterName }}</td>
+                      <td>{{ labelStarter(a.starter) }}</td>
+                      <td>{{ labelMain(a.mainCourse) }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ng-container>
+
             </td>
           </tr>
         </ng-container>
