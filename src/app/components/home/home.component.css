@@ -518,12 +518,17 @@
   letter-spacing: 0.28em;
 }
 
+/* Remove letter-spacing for Chinese text */
+.timeline-section[data-lang="zh"] .title-wedding {
+  letter-spacing: normal;
+}
+
 .timeline-title-script {
   font-family: 'Great Vibes', 'Tangerine', cursive;
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 400;
   color: #1a1a1a;
-  margin-top: -0.4rem;
+  margin-top: 1.2rem;
   margin-left: 1.5rem;
   letter-spacing: 0.02em;
   line-height: 1.1;
@@ -806,6 +811,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
+  filter: brightness(0.5);
 }
 
 .cal-wedding span {

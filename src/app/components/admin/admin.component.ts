@@ -16,8 +16,7 @@ interface RsvpRecord {
   attending: string;
   totalGuests: number;
   attendees: GuestInfo[];
-  email?: string;
-  phone?: string;
+  dietary?: string;
   message: string;
   submittedAt: string;
   language: string;
@@ -166,7 +165,7 @@ export class AdminComponent implements OnInit {
 
     const headers = [
       'Submitted', 'Submitter Name', 'Attending', 'Total Guests',
-      'Email', 'Phone', 'Message', 'Language',
+      'Dietary', 'Message', 'Language',
       'Guest #', 'Guest Name', 'Starter', 'Main Course'
     ].join(',');
 
@@ -177,8 +176,7 @@ export class AdminComponent implements OnInit {
         escape(r.submitterName),
         escape(r.attending),
         escape(String(r.attending === 'yes' ? r.totalGuests : 0)),
-        escape(r.email),
-        escape(r.phone),
+        escape(r.dietary),
         escape(r.message),
         escape(r.language)
       ].join(',');
@@ -194,7 +192,7 @@ export class AdminComponent implements OnInit {
           ].join(','));
         });
       } else {
-        rows.push(`${base},,,,`);
+        rows.push(`${base},,,,,`);
       }
     }
 

@@ -102,26 +102,14 @@
           <tr class="detail-row" *ngIf="expandedRow === r.id">
             <td colspan="7">
 
-              <!-- Contact info -->
-              <div class="detail-contact-card" *ngIf="r.email || r.phone">
-                <p class="detail-section-label">Contact Information</p>
-                <div class="detail-contact-row" *ngIf="r.email">
-                  <span class="detail-contact-icon">✉️</span>
-                  <span class="detail-contact-label">Email</span>
-                  <a class="detail-contact-value" [href]="'mailto:' + r.email">{{ r.email }}</a>
-                </div>
-                <div class="detail-contact-row" *ngIf="r.phone">
-                  <span class="detail-contact-icon">📞</span>
-                  <span class="detail-contact-label">Phone</span>
-                  <a class="detail-contact-value" [href]="'tel:' + r.phone">{{ r.phone }}</a>
-                </div>
-              </div>
-              <div class="detail-no-contact" *ngIf="!r.email && !r.phone">
-                No contact info provided
+              <!-- Dietary restrictions -->
+              <div class="detail-dietary" *ngIf="r.dietary">
+                <p class="detail-section-label">Dietary Restrictions</p>
+                <p class="detail-dietary-text">{{ r.dietary }}</p>
               </div>
 
               <!-- Menu table -->
-              <ng-container *ngIf="r.attending === 'yes' && r.attendees?.length">
+              <ng-container *ngIf="r.attending === 'yes' && r.attendees.length">
                 <p class="detail-section-label" style="margin-top:1.25rem">Menu Choices</p>
                 <table class="attendee-table">
                   <thead>

@@ -62,10 +62,7 @@ interface Translations {
   rsvpYourMenu: string;
   rsvpCompanionTitle: string;
   rsvpCompanionName: string;
-  rsvpEmail: string;
-  rsvpPhone: string;
-  rsvpContactNote: string;
-  rsvpContactError: string;
+  rsvpDietary: string;
   rsvpMessage: string;
   rsvpSubmit: string;
   rsvpSuccess: string;
@@ -110,8 +107,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     myStarter: '',
     myMainCourse: '',
     companions: [] as GuestInfo[],
-    email: '',
-    phone: '',
+    dietary: '',
     message: ''
   };
   rsvpSubmitting = false;
@@ -163,10 +159,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       rsvpYourMenu: 'Your menu',
       rsvpCompanionTitle: 'Guest',
       rsvpCompanionName: 'Full name',
-      rsvpEmail: 'Email address',
-      rsvpPhone: 'Phone number',
-      rsvpContactNote: 'Please provide at least one so we can send you a reminder.',
-      rsvpContactError: 'Please provide an email or phone number to continue.',
+      rsvpDietary: 'Allergies or dietary restrictions (optional)',
       rsvpMessage: 'Message for the couple (optional)',
       rsvpSubmit: 'Send my RSVP',
       rsvpSuccess: 'Thank you! Your RSVP has been received. We can\'t wait to celebrate with you.',
@@ -233,10 +226,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       rsvpYourMenu: 'Votre menu',
       rsvpCompanionTitle: 'Invité',
       rsvpCompanionName: 'Nom complet',
-      rsvpEmail: 'Adresse courriel',
-      rsvpPhone: 'Numéro de téléphone',
-      rsvpContactNote: 'Veuillez fournir l\'un ou l\'autre pour qu\'on puisse vous envoyer un rappel.',
-      rsvpContactError: 'Veuillez fournir un courriel ou un numéro pour continuer.',
+      rsvpDietary: 'Allergies ou restrictions alimentaires (optionnel)',
       rsvpMessage: 'Message pour les mariés (optionnel)',
       rsvpSubmit: 'Envoyer mon RSVP',
       rsvpSuccess: 'Merci ! Votre RSVP a bien été reçu. Nous avons hâte de fêter ça avec vous.',
@@ -260,80 +250,78 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineEvent5: 'Souper'
     },
     zh: {
-      saveTheDate: '保存日期',
+      saveTheDate: '预留佳期',
       details: '详情',
-      timeline: '时间轴',
-      rsvp: '回复',
+      timeline: '日程',
+      rsvp: '出席确认',
       weddingDate: '2026年10月10日',
       days: '天',
       hours: '小时',
       minutes: '分钟',
       seconds: '秒',
-      saveTheDateSection: '保存日期',
-      timelineSection: '时间轴',
+      saveTheDateSection: '敬请预留佳期',
+      timelineSection: '日程',
       detailsSection: '婚礼详情',
-      rsvpSection: '回复',
-      rsvpSubtitle: '请在2026年9月1日前回复。逾期未回复将被视为不出席。',
+      rsvpSection: '确认出席',
+      rsvpSubtitle: '请于2026年9月1日前回复。逾期未回复将视为无法出席。',
       addToCalendar: '添加到日历',
-      googleCalendar: 'Google 日历',
+      googleCalendar: '谷歌日历',
       outlookCalendar: 'Outlook',
-      appleCalendar: 'Apple 日历',
-      welcomeMessage: '诚邀您的到来',
-      welcomePara1: '我们非常高兴您能在这里，迫不及待与您共同庆祝这一特别时刻。',
-      welcomePara2: '这个空间是为您精心打造的，将引导您了解婚礼临近时的所有细节——从场地信息和回复到活动日程及其他要点。',
-      welcomePara3: '您的陪伴对我们意义非凡，我们真心期待与您共享这些时刻、笑声和美好回忆。',
+      appleCalendar: '苹果日历',
+      welcomeMessage: '敬邀',
+      welcomePara1: '我们非常高兴邀请您来到这里，并迫不及待与您共庆这一幸福时刻。',
+      welcomePara2: '我们精心设计了这个页面，为您提供婚礼临近时所需的场地信息、确认出席、活动流程及其他须知。',
+      welcomePara3: '与您共同陪伴的这一天，意义非凡。我们真心期待一同分享这些欢笑与爱的回忆。',
       welcomeClosing: '满怀爱意，',
       welcomeNames: 'Kaige & Melina',
       rsvpName: '姓名',
       rsvpAttending: '您是否出席？',
-      rsvpAttendingYes: '欣然接受',
+      rsvpAttendingYes: '欣然出席',
       rsvpAttendingNo: '遗憾婉拒',
-      rsvpGuests: '宾客人数（包括您本人）',
+      rsvpGuests: '随行人数（含本人）',
       rsvpStarter: '前菜',
       rsvpStarterSoup: '每日例汤',
-      rsvpStarterPasta: '芝士菠菜意式馄饨，玫瑰酱',
+      rsvpStarterPasta: '法佐莱蒂意式方饺（里科塔奶酪与菠菜馅，配番茄奶油酱汁）',
       rsvpMain: '主菜',
-      rsvpMainChicken: '脆皮鸡胸配蒜香土豆泥和烤蔬菜',
-      rsvpMainFish: '味噌黑鳕鱼配野米和炒菠菜',
-      rsvpMainSteak: '16盎司带骨肋眼牛排，蒜香土豆泥和蔬菜',
-      rsvpMainVeg: '素食：松露卡瓦特里意面，野生蘑菇，黑松露油，自制番茄酱，芝麻菜',
+      rsvpMainChicken: '脆皮鸡胸，配蒜香土豆泥及烤时蔬',
+      rsvpMainFish: '味噌烤黑鳕鱼，配野米和炒菠菜',
+      rsvpMainSteak: '16盎司带骨肋眼牛排，配蒜香土豆泥和时蔬',
+      rsvpMainVeg: '素食：黑松露油野蘑菇卡瓦泰利意面，配招牌番茄酱，芝麻菜',
       rsvpDessert: '甜点',
-      rsvpDessertItem: '白巧克力与黑巧克力慕斯层蛋糕 — 附咖啡或茶',
-      rsvpMainKid: '儿童菜单',
-      rsvpYourMenu: '您的菜单',
-      rsvpCompanionTitle: '宾客',
+      rsvpDessertItem: '黑白双搭巧克力慕斯蛋糕，配咖啡或茶',
+      rsvpMainKid: '儿童套餐',
+      rsvpYourMenu: '您的选择',
+      rsvpCompanionTitle: '同行宾客',
       rsvpCompanionName: '姓名',
-      rsvpEmail: '电子邮件地址',
-      rsvpPhone: '电话号码',
-      rsvpContactNote: '请至少提供一种，以便我们发送提醒。',
-      rsvpContactError: '请填写邮件或电话才能继续。',
-      rsvpMessage: '给新人的留言（可选）',
-      rsvpSubmit: '提交回复',
-      rsvpSuccess: '谢谢！我们已收到您的回复，期待与您共同庆祝。',
+      rsvpDietary: '过敏或饮食忌口（可选）',
+      rsvpMessage: '给新人的留言（选填）',
+      rsvpSubmit: '提交我的出席确认',
+      rsvpSuccess: '谢谢！已收到您的出席确认。我们迫不及待与您想见。',
       rsvpError: '出现了一些问题，请重试或直接联系我们。',
       rsvpDeadline: '请在2026年9月1日前回复',
-      detailsCeremony: '仪式',
-      detailsReception: '婚宴',
-      timelineThe: '婚',
-      timelineWedding: '礼',
-      timelineDay: '当天',
+      detailsCeremony: '仪式场地',
+      detailsReception: '婚宴场地',
+      timelineThe: '',
+      timelineWedding: '婚礼日',
+      timelineDay: '',
+
       timelineScript: '日程',
       timelineTime1: '下先1:00',
       timelineTime2: '下先1:30',
       timelineTime3: '下先3:00',
       timelineTime4: '下先4:00',
       timelineTime5: '下先6:00',
-      timelineEvent1: '宾客入場',
+      timelineEvent1: '宾客入场',
       timelineEvent2: '教堂仪式',
-      timelineEvent3: '新人婚纱照',
-      timelineEvent4: '鸡尾酒时间',
+      timelineEvent3: '新人拍照环节',
+      timelineEvent4: '鸡尾酒会',
       timelineEvent5: '晚宴'
     }
   };
 
   private countdownInterval: any;
 
-  constructor(private cdr: ChangeDetectorRef, private languageService: LanguageService, private firestore: Firestore, private injector: Injector) {}
+  constructor(private cdr: ChangeDetectorRef, public languageService: LanguageService, private firestore: Firestore, private injector: Injector) {}
 
   ngOnInit(): void {
     this.updateCountdown();
@@ -361,7 +349,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   async submitRsvp(): Promise<void> {
     if (!this.rsvpForm.name || !this.rsvpForm.attending) return;
-    if (this.rsvpForm.attending === 'yes' && !this.rsvpForm.email && !this.rsvpForm.phone) return;
     this.rsvpSubmitting = true;
     this.rsvpErrored = false;
     try {
@@ -383,8 +370,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           attending: this.rsvpForm.attending,
           totalGuests: this.rsvpForm.attending === 'yes' ? this.rsvpForm.totalGuests : 0,
           attendees,
-          email: this.rsvpForm.email,
-          phone: this.rsvpForm.phone,
+          dietary: this.rsvpForm.dietary,
           message: this.rsvpForm.message,
           submittedAt: new Date().toISOString(),
           language: this.languageService.language
