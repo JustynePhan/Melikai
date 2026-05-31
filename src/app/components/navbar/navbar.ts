@@ -12,7 +12,7 @@ export class Navbar {
   translations = {
     en: { saveTheDate: 'Welcome', timeline: 'Timeline', details: 'Details', rsvp: 'RSVP' },
     fr: { saveTheDate: 'Bienvenue', timeline: 'Chronologie', details: 'Détails', rsvp: 'RSVP' },
-    zh: { saveTheDate: '欢迎', timeline: '时间轴', details: '详情', rsvp: '回复' }
+    zh: { saveTheDate: '预留佳期', timeline: '日程', details: '详情', rsvp: '出席确认' }
   };
 
   menuOpen = false;

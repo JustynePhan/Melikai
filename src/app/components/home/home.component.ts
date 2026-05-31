@@ -79,11 +79,18 @@ interface Translations {
   timelineTime3: string;
   timelineTime4: string;
   timelineTime5: string;
+  timelineTime6: string;
   timelineEvent1: string;
   timelineEvent2: string;
   timelineEvent3: string;
   timelineEvent4: string;
   timelineEvent5: string;
+  timelineEvent6: string;
+  dressCodeTitle: string;
+  dressCodePara1: string;
+  dressCodePara2: string;
+  parkingTitle: string;
+  parkingPara: string;
 }
 
 @Component({
@@ -180,7 +187,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineEvent2: 'Chapel Ceremony',
       timelineEvent3: 'Bridal Photo Session',
       timelineEvent4: 'Cocktail Hour',
-      timelineEvent5: 'Dinner'
+      timelineEvent5: 'Dinner',
+      timelineTime6: '9:00 PM',
+      timelineEvent6: 'After dinner cocktail and party',
+      dressCodeTitle: 'Dress Code',
+      dressCodePara1: 'We\'d love to see our family and friends dressed up for our special day. To help you plan your outfit, we suggest cocktail/semi-formal attire.',
+      dressCodePara2: 'We kindly ask guests to avoid wearing white or black attire. No jeans please!',
+      parkingTitle: 'Parking',
+      parkingPara: 'Nearby, there are several self-service parking lots available for guests. You can find parking options here:'
     },
     fr: {
       saveTheDate: 'Marquez la Date',
@@ -247,7 +261,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineEvent2: 'Cérémonie à la chapelle',
       timelineEvent3: 'Séance photo des mariés',
       timelineEvent4: 'Cocktail',
-      timelineEvent5: 'Souper'
+      timelineEvent5: 'Souper',
+      timelineTime6: '21h00',
+      timelineEvent6: 'Cocktail après-souper et soirée',
+      dressCodeTitle: 'Code vestimentaire',
+      dressCodePara1: 'Nous adorerions voir notre famille et nos amis élégamment habillés pour notre grand jour. Pour vous aider à planifier votre tenue, nous suggérons une tenue cocktail ou semi-formelle.',
+      dressCodePara2: 'Nous vous demandons gentiment d\'éviter les tenues blanches ou noires. Pas de jeans, s\'il vous plaît !',
+      parkingTitle: 'Stationnement',
+      parkingPara: 'À proximité, plusieurs stationnements en libre-service sont disponibles pour les invités. Vous pouvez trouver des options de stationnement ici :'
     },
     zh: {
       saveTheDate: '预留佳期',
@@ -270,7 +291,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       appleCalendar: '苹果日历',
       welcomeMessage: '敬邀',
       welcomePara1: '我们非常高兴邀请您来到这里，并迫不及待与您共庆这一幸福时刻。',
-      welcomePara2: '我们精心设计了这个页面，为您提供婚礼临近时所需的场地信息、确认出席、活动流程及其他须知。',
+      welcomePara2: '我们精心设计了这个页面，为您提供婚礼临近时所需的场地信息，活动流程及其他须知。',
       welcomePara3: '与您共同陪伴的这一天，意义非凡。我们真心期待一同分享这些欢笑与爱的回忆。',
       welcomeClosing: '满怀爱意，',
       welcomeNames: 'Kaige & Melina',
@@ -315,7 +336,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       timelineEvent2: '教堂仪式',
       timelineEvent3: '新人拍照环节',
       timelineEvent4: '鸡尾酒会',
-      timelineEvent5: '晚宴'
+      timelineEvent5: '晚宴',
+      timelineTime6: '晚上9:00',
+      timelineEvent6: '餐后鸡尾酒会与派对',
+      dressCodeTitle: '着装要求',
+      dressCodePara1: '我们期待在特别的日子里看到亲友们盛装出席。建议您选择鸡尾酒会礼服，半正式或商务着装。',
+      dressCodePara2: '请避免穿着与新人撞色的白色或黑色服装，也请勿穿牛仔裤。',
+      parkingTitle: '停车指引',
+      parkingPara: '附近有多个自助停车场可供使用。您可在此查看停车选项：'
     }
   };
 
