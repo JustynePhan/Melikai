@@ -1002,6 +1002,12 @@
   line-height: 1.6;
 }
 
+@media (min-width: 769px) {
+  .details-address {
+    min-height: calc(1.6em * 3);
+  }
+}
+
 .details-map {
   width: 100%;
   overflow: hidden;
