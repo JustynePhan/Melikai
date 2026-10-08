@@ -70,6 +70,7 @@ interface Translations {
   rsvpDeadline: string;
   detailsCeremony: string;
   detailsReception: string;
+  detailsReceptionRoom: string;
   timelineThe: string;
   timelineWedding: string;
   timelineDay: string;
@@ -174,6 +175,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       rsvpDeadline: 'Kindly respond by September 1st, 2026',
       detailsCeremony: 'Ceremony',
       detailsReception: 'Reception',
+      detailsReceptionRoom: 'Third floor — Salle Mont-Royal',
       timelineThe: 'THE',
       timelineWedding: 'WEDDING',
       timelineDay: 'DAY',
@@ -248,6 +250,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       rsvpDeadline: 'Merci de répondre avant le 1er septembre 2026',
       detailsCeremony: 'Cérémonie',
       detailsReception: 'Réception',
+      detailsReceptionRoom: 'Troisième étage — salle Mont-Royal',
       timelineThe: 'LE',
       timelineWedding: 'GRAND',
       timelineDay: 'JOUR',
@@ -322,6 +325,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       rsvpDeadline: '请在2026年9月1日前回复',
       detailsCeremony: '仪式场地',
       detailsReception: '婚宴场地',
+      detailsReceptionRoom: '三楼 — Salle Mont-Royal',
       timelineThe: '',
       timelineWedding: '婚礼日',
       timelineDay: '',
